@@ -1,11 +1,12 @@
 import './App.css';
 import {Switch, Route, Redirect} from 'react-router-dom';
-import Login from './Components/Login';
-import Logout from './Components/Logout';
-import Register from './Components/Register';
-import ForgotPassword from './Components/ForgotPassword';
-import ResetPassword from './Components/ResetPassword';
-import CheckInbox from './Components/CheckInbox';
+import Login from './Components/auth/Login';
+import Logout from './Components/auth/Logout';
+import Register from './Components/auth/Register';
+import ForgotPassword from './Components/auth/ForgotPassword';
+import ResetPassword from './Components/auth/ResetPassword';
+import CheckInbox from './Components/auth/CheckInbox'; 
+import MenuAndNavbar from './Components/MenuAndNavbar';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route exact path="/reset" component={ResetPassword}/>
       <Route exact path="/inbox-pass" component={CheckInbox}/>
       <Route exact path="/inbox-activate" component={CheckInbox}/>
+      <Route exact path="/menu" component={MenuAndNavbar}/>
       </Switch>
     </div>
   );
