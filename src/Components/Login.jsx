@@ -69,7 +69,7 @@ class Login extends Component {
                         <div class="col-auto">
                           <Link
                             class="fs--1"
-                            to="/"
+                            to="/forgot"
                           >
                             Forgot Password?
                           </Link>
