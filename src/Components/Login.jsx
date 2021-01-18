@@ -12,7 +12,7 @@ class Login extends Component {
                 <Link class="d-flex flex-center mb-4" to="/">
                   <img
                     class="mr-2"
-                    src="../images/rayas.png"
+                    src="../../assets/img/illustrations/rayas.png"
                     alt="logo"
                     width="58"
                   />
