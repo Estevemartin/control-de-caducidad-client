@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 
 class Login extends Component {
   render() {
@@ -8,17 +9,17 @@ class Login extends Component {
           <div class="container">
             <div class="row flex-center min-vh-100 py-6">
               <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-                <a class="d-flex flex-center mb-4" href="/">
+                <Link class="d-flex flex-center mb-4" to="/">
                   <img
                     class="mr-2"
-                    src="../public/images/LogoMPASolutions.png"
+                    src="../images/rayas.png"
                     alt="logo"
                     width="58"
                   />
                   <span class="font-sans-serif font-weight-bolder fs-5 d-inline-block">
                     MPA Solutions
                   </span>
-                </a>
+                </Link>
                 <div class="card">
                   <div class="card-body p-4 p-sm-5">
                     <div class="row flex-between-center mb-2">
@@ -28,9 +29,9 @@ class Login extends Component {
                       <div class="col-auto fs--1 text-600">
                         <span class="mb-0 undefined">or</span>{" "}
                         <span>
-                          <a href="../../authentication/basic/register.html">
+                          <Link to="/register">
                             Create an account
-                          </a>
+                          </Link>
                         </span>
                       </div>
                     </div>
@@ -66,12 +67,12 @@ class Login extends Component {
                           </div>
                         </div>
                         <div class="col-auto">
-                          <a
+                          <Link
                             class="fs--1"
-                            href="/"
+                            to="/"
                           >
                             Forgot Password?
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div class="mb-3">
