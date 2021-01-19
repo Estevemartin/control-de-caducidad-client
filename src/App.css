@@ -1,5 +1,13 @@
+
+/* NAVBAR STYLING */
+
 .navbar-logo-mpasol {
     width: 100%;
     max-width: 120px;
     height: 100%;
+}
+
+.navbar-screw-icon {
+    color: #2A7BE4;
+    font-size: 20px;
 }
