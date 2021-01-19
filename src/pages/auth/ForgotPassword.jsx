@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 function ForgotPassword() {
   return (
-    <main className="main" id="top">
       <div className="container">
         <div className="row flex-center min-vh-100 py-6 text-center">
           <div className="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
@@ -19,22 +18,12 @@ function ForgotPassword() {
               </span>
             </Link>
             <div className="card">
-              <div className="card-body p-4 p-sm-5">
-                <h5 className="mb-0">Enter the company code</h5>
-                <form className="mt-4">
-                  <input
-                    className="form-control"
-                    type="email"
-                    placeholder="Company Code"
-                  />
-                  <div className="mb-3">
-                    <button
-                      className="btn btn-primary btn-block mt-3"
-                      type="submit"
-                      name="submit"
-                    >
-                      Validate Code
-                    </button>
+            <div class="card-body p-4 p-sm-5">
+                <h5 class="mb-0">Forgot your password?</h5><small>Enter your email and we'll send you a reset link.</small>
+                <form class="mt-4">
+                  <input class="form-control" type="email" placeholder="Email address" />
+                  <div class="mb-3">
+                    <button class="btn btn-primary btn-block mt-3" type="submit" name="submit">Send reset link</button>
                   </div>
                 </form>
               </div>
@@ -42,7 +31,6 @@ function ForgotPassword() {
           </div>
         </div>
       </div>
-    </main>
   );
 }
 

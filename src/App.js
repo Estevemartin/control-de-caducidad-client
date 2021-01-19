@@ -6,22 +6,26 @@ import Register from './pages/auth/Register';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
 import CheckInbox from './pages/auth/CheckInbox'; 
+import LandingNoCompanies from './pages/LandingNoCompanies'; 
+
 import MenuAndNavbar from './Components/MenuAndNavbar';
 
 function App() {
   return (
     <div className="App">
-    {/* <MenuAndNavbar /> poner withauth cuando esté */}
+    {/* <MenuAndNavbar /> poner PrivateRoute cuando esté */}
       <Switch>
       <Redirect from exact path="/" to="/login"/>
-      <Route exact path="/login" component={Login}/>
-      <Route exact path="/logout" component={Logout}/>
-      <Route exact path="/register" component={Register}/>
-      <Route exact path="/forgot" component={ForgotPassword}/>
-      <Route exact path="/reset" component={ResetPassword}/>
-      <Route exact path="/inbox-pass" component={CheckInbox}/>
-      <Route exact path="/inbox-activate" component={CheckInbox}/>
-      <Route exact path="/menu" component={MenuAndNavbar}/>
+      <Route /*AnonRoute */ exact path="/login" component={Login}/>
+      <Route /*AnonRoute*/ exact path="/logout" component={Logout}/>
+      <Route /*AnonRoute*/ exact path="/register" component={Register}/>
+      <Route /*AnonRoute*/ exact path="/forgot" component={ForgotPassword}/>
+      <Route /*AnonRoute*/ exact path="/reset" component={ResetPassword}/>
+      <Route /*AnonRoute*/ exact path="/inbox-pass" component={CheckInbox}/>
+      <Route /*AnonRoute*/ exact path="/inbox-activate" component={CheckInbox}/>
+      <Route /*PrivateRoute*/ exact path="/menu" component={MenuAndNavbar}/>
+      <Route /*PrivateRoute*/ exact path="/user-menu" component={LandingNoCompanies}/>
+
       </Switch>
     </div>
   );
