@@ -8,7 +8,8 @@ import ResetPassword from './pages/auth/ResetPassword';
 import CheckInbox from './pages/auth/CheckInbox'; 
 import LandingNoCompanies from './pages/LandingNoCompanies';
 import LandingCompanies from './pages/LandingCompanies';
-import CreateCompany from './pages/CreateCompany';  
+import CreateCompany from './pages/CreateCompany';
+import CreateCompanyDetails from './pages/CreateCompanyDetails';    
 
 import MenuAndNavbar from './Components/MenuAndNavbar';
 
@@ -28,6 +29,7 @@ function App() {
       <Route /*PrivateRoute*/ exact path="/menu" component={MenuAndNavbar}/>
       <Route /*PrivateRoute*/ exact path="/user-menu" component={LandingNoCompanies}/>
       <Route /*PrivateRoute*/ exact path="/create-company" component={CreateCompany}/>
+      <Route /*PrivateRoute*/ exact path="/create-company-details" component={CreateCompanyDetails}/>
       <Route /*PrivateRoute*/ exact path="/user-menu-companies" component={LandingCompanies}/>
 
       </Switch>
