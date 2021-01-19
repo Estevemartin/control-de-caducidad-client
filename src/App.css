@@ -23,3 +23,14 @@
 .go-back-button {
     width: 200px;
 }
+
+/* COMPANY DETAILS */
+
+
+.company-details-expired-items-card {
+    background-image: url('./public/images/corner-1.png');
+}
+
+.company-details-controlled-items-card {
+    background-image: url('./public/images/corner-3.png');
+}

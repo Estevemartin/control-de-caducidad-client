@@ -15,7 +15,7 @@ export default class CreateCompanyDetails extends Component {
                     <div class="row gx-2">
                       <div class="col-12 mb-3">
                         <label class="form-label" for="event-name">Company Name</label>
-                        <input class="form-control" id="event-name" type="text"  />
+                        <input class="form-control" id="event-name" type="text" placeholder="Type your company name here" />
                       </div>
                       <div class=" col-12 mb-3">
                         <h6 class="form-label" for="modal-auth-email">Company Responsible</h6>
