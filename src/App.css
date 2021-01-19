@@ -11,3 +11,15 @@
     color: #2A7BE4;
     font-size: 20px;
 }
+
+/* CREATE COMPANY STYLING */
+
+.go-back-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.go-back-button {
+    width: 200px;
+}

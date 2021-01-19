@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 class CreateCompany extends Component {
+    constructor(props){
+        super(props);
+        this.goBack = this.goBack.bind(this);
+     }
+     
+     goBack(){
+         this.props.history.goBack();
+     }
+
     render() {
         return (
             <div className="container">
@@ -37,6 +47,14 @@ class CreateCompany extends Component {
                   </div>
                 </form>
               </div>
+            </div>
+            <div className="mb-3 go-back-button-container">
+                    <button
+                      className="btn btn-light btn-block mt-6 go-back-button"
+                      onClick={this.goBack}
+                    >
+                      Go back
+                    </button>
             </div>
           </div>
         </div>

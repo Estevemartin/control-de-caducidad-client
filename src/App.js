@@ -6,7 +6,8 @@ import Register from './pages/auth/Register';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
 import CheckInbox from './pages/auth/CheckInbox'; 
-import LandingNoCompanies from './pages/LandingNoCompanies'; 
+import LandingNoCompanies from './pages/LandingNoCompanies';
+import CreateCompany from './pages/CreateCompany';  
 
 import MenuAndNavbar from './Components/MenuAndNavbar';
 
@@ -25,6 +26,7 @@ function App() {
       <Route /*AnonRoute*/ exact path="/inbox-activate" component={CheckInbox}/>
       <Route /*PrivateRoute*/ exact path="/menu" component={MenuAndNavbar}/>
       <Route /*PrivateRoute*/ exact path="/user-menu" component={LandingNoCompanies}/>
+      <Route /*PrivateRoute*/ exact path="/create-company" component={CreateCompany}/>
 
       </Switch>
     </div>
