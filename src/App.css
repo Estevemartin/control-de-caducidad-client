@@ -50,3 +50,30 @@
     margin: 0px; 
     border-width: 0px;
 }
+
+.company-details-top-half-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.company-details-left-side-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+
+}
+
+.company-details-right-side-container {
+    width: 70%;
+
+}
+
+.upcoming-expirations-button-align {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}

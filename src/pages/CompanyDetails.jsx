@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import UpcomingExpirationsEmployee from '../Components/UpcomingExpirationsEmployee';
+import MonthlyExpirationsChart from '../Components/MonthlyExpirationsChart';
+
 
 export default class CompanyDetails extends Component {
   render() {
@@ -20,9 +23,11 @@ export default class CompanyDetails extends Component {
           </div>
         </div>
 
+<div className="company-details-top-half-container h-100">
+<div className="company-details-left-side-container">
         {/* CONTROLLED ITEMS CARD */}
 
-        <div class="col-md-4">
+        <div class="w-100 mb-3 container">
           <div
             class="card mb-3 overflow-hidden"
             style={{ minWidth: 12 + "rem" }}
@@ -58,7 +63,7 @@ export default class CompanyDetails extends Component {
 
         {/* EXPIRED ITEMS CARD */}
 
-        <div class="col-sm-6 col-md-4">
+        <div class="w-100 mb-3 container">
           <div class="card overflow-hidden" style={{ minWidth: 12 + "rem" }}>
             <div class="bg-holder bg-card company-details-expired-items-card"></div>
             <div class="card-body position-relative">
@@ -90,18 +95,19 @@ export default class CompanyDetails extends Component {
 
         {/* UPCOMING EXPIRATIONS IN PERIOD CARD */}
 
-        <div class="row g-0">
-          <div class="col-lg-6 col-xxl-4 pr-lg-2 mb-3 mb-xxl-0">
+        <div class=" container-fluid w-100 h-100">
+          <div class="h-100 pb-3">
             <div class="card h-100 bg-line-chart-gradient">
               <div class="card-header bg-transparent">
                 <h5 class="text-white">Upcomming Expirations In Period</h5>
+                <div className="upcoming-expirations-button-align">
                 <div
                   class="real-time-user display-1 font-weight-normal text-white"
                   data-countup='{"endValue":119}'
                 >
                   0
                 </div>
-                <div class="col-auto w-25 d-flex container">
+                <div class="col-auto w-50 d-flex container">
                   <select class="form-select form-select-sm select-month mr-2">
                     <option value="0">1 Week</option>
                     <option value="1">2 Weeks</option>
@@ -110,6 +116,7 @@ export default class CompanyDetails extends Component {
                     <option value="4">6 Months</option>
                     <option value="5">1 Year</option>
                   </select>
+                </div>
                 </div>
               </div>
 
@@ -142,67 +149,18 @@ export default class CompanyDetails extends Component {
                 </div>
               </div>
             </div>
-            <div class="card-footer text-right bg-transparent border-top upcoming-expirations-border">
-              <a class="text-white" href="#!">
-                Real-time report
-                <span class="fa fa-chevron-right ml-1 fs--1"></span>
-              </a>
-            </div>
           </div>
         </div>
 
+
+
+</div>
         {/* MONTHLY EXPIRATIONS CHART */}
 
-        <div class="col-xxl-8 pl-xxl-2 container">
-          <div class="card mb-3">
-            <div class="card-header bg-light py-2">
-              <div class="row flex-between-center">
-                <div class="col-auto">
-                  <h6 class="mb-0">Monthly expirations</h6>
-                </div>
-                <div class="col-auto d-flex">
-                  <a class="btn btn-link btn-sm mr-2" href="#!">
-                    View Details
-                  </a>
-                  <div class="dropdown font-sans-serif btn-reveal-trigger">
-                    <button
-                      class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal dropdown-caret-none"
-                      type="button"
-                      id="dropdown-top-products"
-                      data-toggle="dropdown"
-                      data-boundary="viewport"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <span class="fas fa-ellipsis-h fs--2"></span>
-                    </button>
-                    <div
-                      class="dropdown-menu dropdown-menu-right border py-2"
-                      aria-labelledby="dropdown-top-products"
-                    >
-                      <a class="dropdown-item" href="#!">
-                        View
-                      </a>
-                      <a class="dropdown-item" href="#!">
-                        Export
-                      </a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item text-danger" href="#!">
-                        Remove
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-body h-100">
-              <div
-                class="echart-bar-top-products h-100"
-                data-echart-responsive="true"
-              ></div>
-            </div>
-          </div>
-        </div>
+<div className="company-details-right-side-container">
+        
+        <MonthlyExpirationsChart/>
+
 
         {/* ITEMS */}
 
@@ -358,98 +316,12 @@ export default class CompanyDetails extends Component {
           </div>
         </div>
 
-
+</div>
+</div>
         {/* UPCOMING EXPIRATIONS BY EMPLOYEE */}
 
-
-        <div class="card mb-3" id="customersTable" data-list='{"valueNames":["name","email","phone","address","joined"],"page":10,"pagination":true}'>
-            <div class="card-header">
-              <div class="row flex-between-center">
-                <div class="col-4 col-sm-auto d-flex align-items-center pr-0">
-                  <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0">Upcoming Expirations</h5>
-                </div>
-                <div class="col-8 col-sm-auto text-right pl-2">
-                  <div class="d-none" id="table-customers-actions">
-                    <div class="d-flex">
-                      <select class="form-select form-select-sm" aria-label="Bulk actions">
-                        <option selected="">Bulk actions</option>
-                        <option value="Refund">Refund</option>
-                        <option value="Delete">Delete</option>
-                        <option value="Archive">Archive</option>
-                      </select>
-                      <button class="btn btn-falcon-default btn-sm ml-2" type="button">Apply</button>
-                    </div>
-                  </div>
-                  <div id="table-customers-replace-element">
-                    <button class="btn btn-falcon-default btn-sm" type="button"><span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span><span class="d-none d-sm-inline-block ml-1">New</span></button>
-                    <button class="btn btn-falcon-default btn-sm mx-2" type="button"><span class="fas fa-filter" data-fa-transform="shrink-3 down-2"></span><span class="d-none d-sm-inline-block ml-1">Filter</span></button>
-                    <button class="btn btn-falcon-default btn-sm" type="button"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3 down-2"></span><span class="d-none d-sm-inline-block ml-1">Export</span></button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-body p-0">
-              <div class="table-responsive">
-                <table class="table table-sm table-striped fs--1 mb-0">
-                  <thead class="bg-200 text-900">
-                    <tr>
-                      <th>
-                        <div class="form-check fs-0 mb-0 d-flex align-items-center">
-                          <input class="form-check-input" id="checkbox-bulk-customers-select" type="checkbox" data-bulk-select='{"body":"table-customers-body","actions":"table-customers-actions","replacedElement":"table-customers-replace-element"}' />
-                        </div>
-                      </th>
-                      <th class="sort pr-1 align-middle white-space-nowrap" data-sort="name">Name</th>
-                      <th class="sort pr-1 align-middle white-space-nowrap" style={{maxWidth: 20 + "px"}} data-sort="email">Email</th>
-                      <th class="sort pr-1 align-middle white-space-nowrap" data-sort="phone">Phone</th>
-                      <th class="sort pr-1 align-middle white-space-nowrap" data-sort="item">Item</th>
-                      <th class="sort pr-1 align-middle white-space-nowrap" data-sort="phone">Expiration Date</th>
-                      <th class="align-middle no-sort"></th>
-                    </tr>
-                  </thead>
-                  <tbody class="list" id="table-customers-body">
-                    <tr class="btn-reveal-trigger">
-                      <td class="align-middle py-2" style={{width: 28 + "px"}}>
-                        <div class="form-check fs-0 mb-0 d-flex align-items-center">
-                          <input class="form-check-input" type="checkbox" id="customer-0" data-bulk-select-row="data-bulk-select-row" />
-                        </div>
-                      </td>
-                      <td class="name align-middle white-space-nowrap py-2"><a href="../e-commerce/customer-details.html">
-                          <div class="d-flex d-flex align-items-center">
-                            <div class="avatar avatar-xl mr-2">
-                              <div class="avatar-name rounded-circle"><span>RA</span></div>
-                            </div>
-                            <div class="flex-1">
-                              <h5 class="mb-0 fs--1">Ricky Antony</h5>
-                            </div>
-                          </div>
-                        </a></td>
-                      <td class="email align-middle py-2"><a href="mailto:ricky@example.com">ricky@example.com</a></td>
-                      <td class="phone align-middle white-space-nowrap py-2"><a href="tel:2012001851">601-200-1851</a></td>
-                      <td class="address align-middle white-space-nowrap pl-5 py-2">2392 Main Avenue</td>
-                      <td class="date align-middle white-space-nowrap pl-5 py-2">29/01/2021</td>
-                                            <td class="align-middle white-space-nowrap py-2 text-right">
-                        <div class="dropdown font-sans-serif">
-                          <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal" type="button" id="customer-dropdown-0" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--1"></span></button>
-                          <div class="dropdown-menu dropdown-menu-right border py-0" aria-labelledby="customer-dropdown-0">
-                            <div class="bg-white py-2"><a class="dropdown-item" href="#!">Edit</a><a class="dropdown-item text-danger" href="#!">Delete</a></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            
-            <div class="card-footer d-flex align-items-center justify-content-center">
-              <button class="btn btn-sm btn-falcon-default mr-1" type="button" title="Previous" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-              <ul class="pagination mb-0"></ul>
-              <button class="btn btn-sm btn-falcon-default ml-1" type="button" title="Next" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
-            </div>
-          </div>
-
-
-
+        <div className="container"><UpcomingExpirationsEmployee /></div>
+        
 
       </div>
     );
