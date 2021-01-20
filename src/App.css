@@ -34,3 +34,19 @@
 .company-details-controlled-items-card {
     background-image: url('./public/images/corner-3.png');
 }
+
+.upcoming-expirations-border {
+    border-color: rgba(255, 255, 255, 0.05)
+}
+
+.canvas-graphic {
+    position: absolute; 
+    left: 0px; 
+    top: 0px; 
+    width: 648px; 
+    height: 295px; 
+    user-select: none; 
+    padding: 0px; 
+    margin: 0px; 
+    border-width: 0px;
+}
