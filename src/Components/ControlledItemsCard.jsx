@@ -3,9 +3,9 @@ import React, { Component } from "react";
 export default class ControlledItemsCard extends Component {
   render() {
     return (
-      <div className="w-100 mb-3 container">
+      
         <div
-          className="card mb-3 overflow-hidden"
+          className="card mb-3 overflow-hidden "
           style={{ minWidth: 12 + "rem" }}
         >
           <div className="bg-holder bg-card company-details-controlled-items-card"></div>
@@ -34,7 +34,6 @@ export default class ControlledItemsCard extends Component {
             </a>
           </div>
         </div>
-      </div>
     );
   }
 }

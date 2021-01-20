@@ -19,13 +19,13 @@ export default class CompanyDetails extends Component {
             <div className="company-details-left-side-container">
             
                 {/* CONTROLLED ITEMS CARD */}
-
-                <ControlledItemsCard />
-
+                <div className="w-100 mb-3 container">
+                  <ControlledItemsCard />
+                </div>
                 {/* EXPIRED ITEMS CARD */}
-
-                <ExpiredItemsCard />
-
+                <div className="w-100 mb-3 container">
+                  <ExpiredItemsCard />
+                </div>
                 {/* UPCOMING EXPIRATIONS IN PERIOD CARD */}
 
                 <ExpirationsInPeriod />

@@ -90,11 +90,28 @@
 .item-details-top-half-container {
     display: flex;
     width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
+    align-content: center;
+}
+
+.item-details-top-half-item {
+    width: 100%;
+    padding: 0.5rem;
 }
 
 .item-details-right-side-container {
     width: 70%;
+}
+
+.item-details-bottom-section {
+    
+}
+
+@media (min-width: 965px;) {
+    .item-details-bottom-section {
+        display: flex;
+    }
 
 }

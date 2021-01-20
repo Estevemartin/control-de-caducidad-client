@@ -2,7 +2,7 @@ import React from "react";
 
 function ResponsiblesTag() {
   return (
-    <div class="card">
+    <div class="card" >
       <div class="card-header d-flex flex-between-center bg-light py-2">
         <h6 class="mb-0">Responsibles</h6>
         <div class="dropdown font-sans-serif btn-reveal-trigger">
