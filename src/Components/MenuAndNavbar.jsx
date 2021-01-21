@@ -191,6 +191,7 @@ function MenuAndNavbar(props) {
           </Link>
           <ul className="navbar-nav navbar-nav-icons ml-auto flex-row align-items-center">
             <li className="nav-item dropdown">
+            {/* eslint-disable-next-line */}
               <a
                 className="nav-link pr-0"
                 id="navbarDropdownUser"

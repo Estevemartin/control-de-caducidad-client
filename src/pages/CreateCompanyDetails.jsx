@@ -43,7 +43,8 @@ export default class CreateCompanyDetails extends Component {
                     <div className="dz-preview dz-preview-multiple m-0 d-flex flex-column">
                       <div className="d-flex media align-items-center mb-3 pb-3 border-bottom btn-reveal-trigger"><img className="dz-image" src="..." alt="..." data-dz-thumbnail="data-dz-thumbnail" />
                         <div className="flex-1 d-flex flex-between-center">
-                          <div>
+                          <div> 
+                           {/* eslint-disable-next-line */}
                             <h6 data-dz-name="data-dz-name"></h6>
                             <div className="d-flex align-items-center">
                               <p className="mb-0 fs--1 text-400 lh-1" data-dz-size="data-dz-size"></p>

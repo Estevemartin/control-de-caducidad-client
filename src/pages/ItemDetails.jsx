@@ -4,7 +4,6 @@ import MonthlyExpirationsChart from "../Components/MonthlyExpirationsChart";
 import ControlledItemsCard from "../Components/ControlledItemsCard";
 import ExpiredItemsCard from "../Components/ExpiredItemsCard";
 import CompanyNavbar from "../Components/CompanyNavbar";
-import ItemAddAndList from "../Components/ItemAddAndList";
 import ReminderConfig from "../Components/ReminderConfig";
 import ResponsiblesTag from "../Components/ResponsiblesTag";
 import LastDeliveries from "../Components/LastDeliveries";
@@ -16,22 +15,20 @@ export default class ItemDetails extends Component {
         {/* TOP COMPANY NAVBAR */}
         <CompanyNavbar />
 
-        <div className=" h-100">
-        <div class="row g-3">
-        <div class="col-sm-6 col-md-4 d-flex w-100">
-          {/* CONTROLLED ITEMS CARD */}
-          <div className="item-details-top-half-item h-100">
-            <ControlledItemsCard />
-          </div>
-          {/* EXPIRED ITEMS CARD */}
-          <div className="item-details-top-half-item  h-100">
-            <ExpiredItemsCard />
-          </div>
-          {/* RESPONSIBLES */}
-          <div className="item-details-top-half-item  h-100">
-            <ResponsiblesTag />
-          </div>
-          </div>
+        <div className="container ">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 item-details-top-half-container">
+            {/* CONTROLLED ITEMS CARD */}
+            <div className="col-md-4 item-details-top-half-item">
+              <ControlledItemsCard />
+            </div>
+            {/* EXPIRED ITEMS CARD */}
+            <div className="col-md-4 item-details-top-half-item mb-3">
+              <ExpiredItemsCard />
+            </div>
+            {/* RESPONSIBLES */}
+            <div className="col-md-4 item-details-top-half-item ">
+              <ResponsiblesTag />
+            </div>
           </div>
         </div>
 
@@ -45,13 +42,13 @@ export default class ItemDetails extends Component {
 
         <div className="container">
           <UpcomingExpirationsEmployee />
-          <div className="item-details-bottom-section">
-          <div className="col">
-          <ReminderConfig />
-          </div>
-          <div className="col w-100">
-          <LastDeliveries />
-          </div>
+          <div className="row row-cols-1 row-cols-md-2 item-details-bottom-section">
+            <div className="col-12 col-md-8">
+              <ReminderConfig />
+            </div>
+            <div className="col-12 col-md-4">
+              <LastDeliveries />
+            </div>
           </div>
         </div>
       </div>

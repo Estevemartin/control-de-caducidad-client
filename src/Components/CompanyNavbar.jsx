@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 export default class CompanyNavbar extends Component {
     render() {
@@ -10,9 +11,11 @@ export default class CompanyNavbar extends Component {
                   <h5 className="mb-2 mb-md-0">Company name</h5>
                 </div>
                 <div className="col-auto">
-                  <button className="btn btn-falcon-primary btn-sm" role="button">
+                <Link to="/edit-company">
+                  <button className="btn btn-falcon-primary btn-sm">
                     Edit Company Details
                   </button>
+                  </Link>
                 </div>
               </div>
             </div>
