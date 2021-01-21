@@ -11,6 +11,7 @@ import LandingCompanies from './pages/LandingCompanies';
 import AddCompany from './pages/AddCompany';
 import CreateCompanyDetails from './pages/CreateCompanyDetails'; 
 import CompanyDetails from './pages/CompanyDetails';  
+import EmployeeDetails from './pages/EmployeeDetails';  
 import ItemDetails from './pages/ItemDetails';      
 
 import MenuAndNavbar from './Components/MenuAndNavbar';
@@ -35,6 +36,7 @@ function App() {
       <Route /*PrivateRoute*/ exact path="/user-menu-companies" component={LandingCompanies}/>
       <Route /*PrivateRoute*/ exact path="/company-details" component={CompanyDetails}/>
       <Route /*PrivateRoute*/ exact path="/item-details" component={ItemDetails}/>
+      <Route /*PrivateRoute*/ exact path="/employee-details" component={EmployeeDetails}/>
 
       </Switch>
     </div>
