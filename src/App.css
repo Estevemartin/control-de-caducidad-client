@@ -57,25 +57,29 @@
     border-width: 0px;
 }
 
-.company-details-top-half-container {
+
+
+
+
+
+/* .company-details-top-half-container {
     display: flex;
     width: 100%;
     justify-content: center;
-}
+} */
 
-.company-details-left-side-container {
+/* .company-details-left-side-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 30%;
+} */
 
-}
-
-.company-details-right-side-container {
+/* .company-details-right-side-container {
     width: 70%;
 
-}
+} */
 
 .upcoming-expirations-button-align {
     display: flex;

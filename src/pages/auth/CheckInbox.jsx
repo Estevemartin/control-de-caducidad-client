@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function CheckInbox(props) {
-  //hacer función para que muestre el mail del usuario?
+  //TODO hacer función para que muestre el mail del usuario
 
   function resetOrActivateAcctounMessage() {
     const query = props.location.pathname;
