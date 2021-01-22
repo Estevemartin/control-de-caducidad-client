@@ -14,12 +14,19 @@ import CompanyDetails from './pages/CompanyDetails';
 import EmployeeDetails from './pages/EmployeeDetails';  
 import ItemDetails from './pages/ItemDetails';      
 
-import MenuAndNavbar from './Components/MenuAndNavbar';
+import SideNavbar from './Components/SideNavbar';
+import TopNavbar from './Components/TopNavbar';
+import Spinner from './Components/Spinner';
 
 function App() {
   return (
     <div className="App">
-    {/* <MenuAndNavbar /> poner PrivateRoute cuando esté */}
+    <main className="main" id="top">
+    <div className="container">
+    <SideNavbar /> {/* poner PrivateRoute cuando esté */}
+    
+    <div className="content">
+    <TopNavbar />
       <Switch>
       <Redirect from exact path="/" to="/login"/>
       <Route /*AnonRoute */ exact path="/login" component={Login}/>
@@ -29,7 +36,7 @@ function App() {
       <Route /*AnonRoute*/ exact path="/reset" component={ResetPassword}/>
       <Route /*AnonRoute*/ exact path="/inbox-pass" component={CheckInbox}/>
       <Route /*AnonRoute*/ exact path="/inbox-activate" component={CheckInbox}/>
-      <Route /*PrivateRoute*/ exact path="/menu" component={MenuAndNavbar}/>
+      <Route /*AnonRoute*/ exact path="/spinner" component={Spinner}/>
       <Route /*PrivateRoute*/ exact path="/user-menu" component={LandingNoCompanies}/>
       <Route /*PrivateRoute*/ exact path="/add-company" component={AddCompany}/>
       <Route /*PrivateRoute*/ exact path="/create-company-details" component={CreateCompanyDetails}/>
@@ -39,6 +46,9 @@ function App() {
       <Route /*PrivateRoute*/ exact path="/employee-details" component={EmployeeDetails}/>
 
       </Switch>
+      </div>
+      </div>
+      </main>
     </div>
   );
 }

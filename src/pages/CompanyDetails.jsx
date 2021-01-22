@@ -32,7 +32,7 @@ export default class CompanyDetails extends Component {
 
           {/* MONTHLY EXPIRATIONS CHART */}
 
-          <div className="col-md-8 col-sm-12">
+          <div className="col-md-8 col-sm-12 container">
             <MonthlyExpirationsChart />
 
             {/* ITEMS */}

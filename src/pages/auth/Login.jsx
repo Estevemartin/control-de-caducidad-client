@@ -6,7 +6,7 @@ class Login extends Component {
     return (
       <div>
         <main className="main" id="top">
-          <div className="container">
+          <div className="">
             <div className="row flex-center min-vh-100 py-6">
               <div className="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                 <Link className="d-flex flex-center mb-4" to="/">

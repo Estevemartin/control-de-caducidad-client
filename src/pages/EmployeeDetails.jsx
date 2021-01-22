@@ -5,6 +5,11 @@ import ExpiredItemsCard from "../Components/ExpiredItemsCard";
 import CompanyNavbar from "../Components/CompanyNavbar";
 
 export default class EmployeeDetails extends Component {
+
+
+  /* tableFields */
+
+
   render() {
     return (
       <div className="container">

@@ -34,7 +34,7 @@ export default class ItemDetails extends Component {
 
         {/* MONTHLY EXPIRATIONS CHART */}
 
-        <div className="item-details-right-side-container w-100 h-100 mt-2">
+        <div className="item-details-right-side-container w-100 h-100 mt-2 container">
           <MonthlyExpirationsChart />
         </div>
 
