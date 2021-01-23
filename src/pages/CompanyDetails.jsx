@@ -10,42 +10,44 @@ import ItemAddAndList from "../Components/ItemAddAndList";
 export default class CompanyDetails extends Component {
   render() {
     return (
-      <div className="container">
+      <div>
         {/* TOP COMPANY NAVBAR */}
         <CompanyNavbar />
-
-        <div className="container row-cols-1 row-cols-md-3 d-md-flex">
+        {/* CONTENT */}
+        <div className="row-cols-md-3 d-md-flex justify-content-between">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
             {/* CONTROLLED ITEMS CARD */}
-            <div className="col-md-12 item-details-top-half-item">
+            <div className="col-md-12 item-details-top-half-item col">
               <ControlledItemsCard />
             </div>
             {/* EXPIRED ITEMS CARD */}
             <div className="col-md-12 item-details-top-half-item mb-3">
               <ExpiredItemsCard />
             </div>
+          </div>
+
+          <div className="col-md-8 col-sm-12">
+          {/* MONTHLY EXPIRATIONS CHART */}
+            <MonthlyExpirationsChart />
+          </div>
+        </div>
+
+        <div className="row-cols-md-3 d-md-flex justify-content-between">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
             {/* UPCOMING EXPIRATIONS IN PERIOD CARD */}
             <div className="col-md-12 col-sm-12 item-details-top-half-item">
               <ExpirationsInPeriod />
             </div>
           </div>
 
-          {/* MONTHLY EXPIRATIONS CHART */}
-
-          <div className="col-md-8 col-sm-12 container">
-            <MonthlyExpirationsChart />
-
-            {/* ITEMS */}
-
+          <div className="col-md-8 col-sm-12">
+          {/* ITEMS */}
             <ItemAddAndList />
           </div>
         </div>
 
         {/* UPCOMING EXPIRATIONS BY EMPLOYEE */}
-
-        <div className="container">
-          <UpcomingExpirationsEmployee />
-        </div>
+        <UpcomingExpirationsEmployee />
       </div>
     );
   }

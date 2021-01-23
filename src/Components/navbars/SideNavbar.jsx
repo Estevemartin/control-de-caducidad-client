@@ -29,15 +29,12 @@ function SideNavbar(props) {
             </div>
           </a>
         </div>
-
-        {/* VERTICAL NAVBAR */}
-
         <div className="collapse navbar-collapse" id="navbarVerticalCollapse">
-          <div className="navbar-vertical-content scrollbar">
+          <div className="navbar-vertical-content scrollbar ">
             <ul className="navbar-nav flex-column">
               <li className="nav-item">
                 <a
-                  className="nav-link dropdown-indicator"
+                  className="nav-link dropdown-indicator "
                   href="#authentication"
                   data-toggle="collapse"
                   role="button"

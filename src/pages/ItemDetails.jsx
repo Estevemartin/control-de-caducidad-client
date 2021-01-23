@@ -11,11 +11,11 @@ import LastDeliveries from "../Components/LastDeliveries";
 export default class ItemDetails extends Component {
   render() {
     return (
-      <div className="container">
+      <div>
         {/* TOP COMPANY NAVBAR */}
         <CompanyNavbar />
-
-        <div className="container ">
+        {/* CONTENT */}
+        <div>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 item-details-top-half-container">
             {/* CONTROLLED ITEMS CARD */}
             <div className="col-md-4 item-details-top-half-item">
@@ -34,13 +34,13 @@ export default class ItemDetails extends Component {
 
         {/* MONTHLY EXPIRATIONS CHART */}
 
-        <div className="item-details-right-side-container w-100 h-100 mt-2 container">
+        <div className="item-details-right-side-container w-100 h-100 mt-2">
           <MonthlyExpirationsChart />
         </div>
 
         {/* UPCOMING EXPIRATIONS BY EMPLOYEE */}
 
-        <div className="container">
+        <div>
           <UpcomingExpirationsEmployee />
           <div className="row row-cols-1 row-cols-md-2 item-details-bottom-section">
             <div className="col-12 col-md-8">

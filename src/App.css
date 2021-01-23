@@ -70,3 +70,9 @@
 .spinner {
     height: 100vh;
 }
+
+
+.sidebaryeso {
+    margin-top: -1rem;
+    z-index: 100;
+}

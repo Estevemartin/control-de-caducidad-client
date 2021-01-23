@@ -17,7 +17,7 @@ export default class EmployeeDetails extends Component {
         <CompanyNavbar />
 
         
-        <div className="row container">
+        <div className="row ">
           {/* CONTROLLED ITEMS CARD */}
           <div className="col col-xl-5 mb-3">
             <ControlledItemsCard />
@@ -30,7 +30,7 @@ export default class EmployeeDetails extends Component {
 
         {/* UPCOMING EXPIRATIONS BY EMPLOYEE */}
 
-        <div className="container">
+        <div className="">
           <UpcomingExpirationsEmployee />
         </div>
       </div>

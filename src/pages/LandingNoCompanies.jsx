@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 
 function LandingNoCompanies() {
     return (
-        <div className="card">
-            <div className="card-body overflow-hidden p-lg-6">
+        <div className="card mt-4">
+            <div className="card-body overflow-hidden p-lg-6 ">
               <div className="row align-items-center">
                 <div className="col-lg-6"><img className="img-fluid" src="../assets/img/illustrations/4.png" alt="" /></div>
                 <div className="col-lg-6 pl-lg-4 my-5 text-center text-lg-left">

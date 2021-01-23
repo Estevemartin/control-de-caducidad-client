@@ -3,8 +3,6 @@ import React, { Component } from "react";
 export default class LandingCompanies extends Component {
   render() {
     return (
-      <div className="container">
-        <div className="content">
           <div className="card mb-3">
             <div className="card-header bg-light">
               <h5 className="mb-0">Companies</h5>
@@ -32,8 +30,6 @@ export default class LandingCompanies extends Component {
               </div>
             </div>
           </div>
-        </div>
-      </div>
     );
   }
 }

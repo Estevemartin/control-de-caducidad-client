@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class ExpirationsInPeriod extends Component {
     render() {
         return (
-            <div className=" container-fluid w-100 h-100">
+            <div className="w-100 h-100">
           <div className="h-100 pb-3">
             <div className="card h-100 bg-line-chart-gradient">
               <div className="card-header bg-transparent">
