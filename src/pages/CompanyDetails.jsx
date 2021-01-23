@@ -6,13 +6,40 @@ import ExpiredItemsCard from "../Components/ExpiredItemsCard";
 import CompanyNavbar from "../Components/CompanyNavbar";
 import ExpirationsInPeriod from "../Components/ExpirationsInPeriod";
 import ItemAddAndList from "../Components/ItemAddAndList";
+import {Link} from 'react-router-dom';
 
 export default class CompanyDetails extends Component {
+  state = {
+    companyName: "",
+  }
+
+  componentDidMount = () => {
+    this.GetCompanyName();
+    this.Button();
+  };
+
+  GetCompanyName = () => {
+    const findCompany = "El nombre de la empresa";
+    this.setState({companyName: findCompany});
+  };
+
+  Button = () => {
+    return(
+      <Link to="/edit-company">
+                  <button className="btn btn-falcon-primary btn-sm">
+                    Edit Company Details
+                  </button>
+                  </Link>
+    )
+  }
+
+
   render() {
+    const {companyName} = this.state;
     return (
       <div>
         {/* TOP COMPANY NAVBAR */}
-        <CompanyNavbar />
+        <CompanyNavbar companyName={companyName} button={this.Button()}/>
         {/* CONTENT */}
         <div className="row-cols-md-3 d-md-flex justify-content-between">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
