@@ -7,16 +7,16 @@ export default class ExpiredItemsCard extends Component {
         <div className="bg-holder bg-card company-details-expired-items-card"></div>
         <div className="card-body position-relative">
           <h6>
-            Expired Items
+          {this.props.titleExpired ? this.props.titleExpired : "Expired"}
             <span className="badge badge-soft-warning rounded-pill ml-2">
-              4%
+              {this.props.percentage ? this.props.percentage : "% pending"}
             </span>
           </h6>
           <div
             className="display-4 fs-4 mb-2 font-weight-normal font-sans-serif text-warning"
             data-countup='{"endValue":58,"decimalPlaces":0,"suffix":" Items"}'
           >
-            0
+            {this.props.totalExpired ? this.props.totalExpired : "Not available"}
           </div>
           <a
             className="font-weight-semi-bold fs--1 text-nowrap"

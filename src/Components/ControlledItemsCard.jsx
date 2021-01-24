@@ -11,16 +11,16 @@ export default class ControlledItemsCard extends Component {
           <div className="bg-holder bg-card company-details-controlled-items-card"></div>
           <div className="card-body position-relative">
             <h6>
-              Controlled Items
+            {this.props.titleControlled ? this.props.titleControlled : "Controlled"}
               <span className="badge badge-soft-success rounded-pill ml-2">
-                96%
+              {this.props.percentage ? this.props.percentage : "% pending"}
               </span>
             </h6>
             <div
               className="display-4 fs-4 mb-2 font-weight-normal font-sans-serif"
               data-countup='{"endValue":1450,"suffix":" Items"}'
             >
-              0
+              {this.props.totalControlled ? this.props.totalControlled : "Not available"}
             </div>
             <a
               className="font-weight-semi-bold fs--1 text-nowrap"

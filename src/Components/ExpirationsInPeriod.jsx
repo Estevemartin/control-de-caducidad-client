@@ -17,6 +17,7 @@ export default class ExpirationsInPeriod extends Component {
                 </div>
                 <div className="col-auto w-50 d-flex container">
                   <select className="form-select form-select-sm select-month mr-2">
+                  <option selected>Choose One</option>
                     <option value="0">1 Week</option>
                     <option value="1">2 Weeks</option>
                     <option value="2">1 Month</option>
@@ -41,18 +42,6 @@ export default class ExpirationsInPeriod extends Component {
                   <div className="list-group-item bg-transparent d-flex justify-content-between px-0 py-1 upcoming-expirations-border">
                     <p className="mb-0">Item 2</p>
                     <p className="mb-0">3</p>
-                  </div>
-                  <div className="list-group-item bg-transparent d-flex justify-content-between px-0 py-1 upcoming-expirations-border">
-                    <p className="mb-0">Item 3</p>
-                    <p className="mb-0">2</p>
-                  </div>
-                  <div className="list-group-item bg-transparent d-flex justify-content-between px-0 py-1 upcoming-expirations-border">
-                    <p className="mb-0">Item 4</p>
-                    <p className="mb-0">2</p>
-                  </div>
-                  <div className="list-group-item bg-transparent d-flex justify-content-between px-0 py-1 upcoming-expirations-border">
-                    <p className="mb-0">Item 5</p>
-                    <p className="mb-0">1</p>
                   </div>
                 </div>
               </div>
