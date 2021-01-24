@@ -11,6 +11,7 @@ import LandingCompanies from './pages/LandingCompanies';
 import AddCompany from './pages/AddCompany';
 import CreateCompanyDetails from './pages/CreateCompanyDetails'; 
 import EditCompanyDetails from './pages/EditCompanyDetails'; 
+import ProfileSettings from './pages/ProfileSettings'; 
 import CompanyDetails from './pages/CompanyDetails';  
 import EmployeeDetails from './pages/EmployeeDetails';  
 import ItemDetails from './pages/ItemDetails';      
@@ -44,6 +45,7 @@ function App() {
               <Route /*PrivateRoute*/ exact path="/add-company" component={AddCompany}/>
               <Route /*PrivateRoute*/ exact path="/create-company-details" component={CreateCompanyDetails}/>
               <Route /*PrivateRoute*/ exact path="/edit-company" component={EditCompanyDetails}/>
+              <Route /*PrivateRoute*/ exact path="/profile-settings" component={ProfileSettings}/>
               <Route /*PrivateRoute*/ exact path="/user-menu-companies" component={LandingCompanies}/>
               <Route /*PrivateRoute*/ exact path="/company-details" component={CompanyDetails}/>
               <Route /*PrivateRoute*/ exact path="/item-details" component={ItemDetails}/>

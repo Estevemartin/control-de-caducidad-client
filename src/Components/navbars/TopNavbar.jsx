@@ -47,7 +47,7 @@ function TopNavbar() {
               aria-labelledby="navbarDropdownUser"
             >
               <div className="bg-white rounded-lg py-2">
-                <Link className="dropdown-item" to="/settings">
+                <Link className="dropdown-item" to="/profile-settings">
                   Profile settings
                 </Link>
                 <Link className="dropdown-item" to="/logout">
