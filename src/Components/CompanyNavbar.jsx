@@ -11,7 +11,7 @@ class CompanyNavbar extends Component {
         <div className="card-body">
           <div className="row flex-between-center">
             <div className="col-md">
-              <h5 className="mb-2 mb-md-0"> {this.props.companyName} </h5>
+              <h5 className="mb-2 mb-md-0"> {this.props.theName} </h5>
             </div>
             <div className="col-auto">{this.props.button}</div>
           </div>

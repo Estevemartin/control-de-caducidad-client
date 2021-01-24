@@ -245,7 +245,7 @@ export default class ItemDetails extends Component {
     return (
       <div>
         {/* TOP COMPANY NAVBAR */}
-        <CompanyNavbar companyName={itemName} button={this.Button()} />
+        <CompanyNavbar theName={itemName} button={this.Button()} />
 
         {/* CONTENT */}
         <div>

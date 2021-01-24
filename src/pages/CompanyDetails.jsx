@@ -39,7 +39,7 @@ export default class CompanyDetails extends Component {
     return (
       <div>
         {/* TOP COMPANY NAVBAR */}
-        <CompanyNavbar companyName={companyName} button={this.Button()}/>
+        <CompanyNavbar theName={companyName} button={this.Button()}/>
         {/* CONTENT */}
         <div className="row-cols-md-3 d-md-flex justify-content-between">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
