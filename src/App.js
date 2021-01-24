@@ -1,5 +1,9 @@
 import './App.css';
 import {Switch, Route, Redirect} from 'react-router-dom';
+import AuthProvider from './lib/AuthProvider'
+import AnonRoute from "../src/Components/componentRoutes/AnonRoute";
+import PrivateRoute from "../src/Components/componentRoutes/PrivateRoute";
+
 import Login from './pages/auth/Login';
 import Logout from './pages/auth/Logout';
 import Register from './pages/auth/Register';
@@ -22,6 +26,7 @@ import Spinner from './Components/Spinner';
 
 function App() {
   return (
+    <AuthProvider>
     <div className="App">
       <main className="main" id="top">
         <Switch>
@@ -29,7 +34,7 @@ function App() {
         <Redirect from exact path="/" to="/login"/>
         <Route /*AnonRoute */ exact path="/login" component={Login}/>
         <Route /*AnonRoute*/ exact path="/logout" component={Logout}/>
-        <Route /*AnonRoute*/ exact path="/register" component={Register}/>
+        <AnonRoute /*AnonRoute*/ exact path="/register" component={Register}/>
         <Route /*AnonRoute*/ exact path="/forgot" component={ForgotPassword}/>
         <Route /*AnonRoute*/ exact path="/reset" component={ResetPassword}/>
         <Route /*AnonRoute*/ exact path="/inbox-pass" component={CheckInbox}/>
@@ -55,6 +60,7 @@ function App() {
         </Switch>
       </main>
     </div>
+    </AuthProvider>
   );
 }
 
