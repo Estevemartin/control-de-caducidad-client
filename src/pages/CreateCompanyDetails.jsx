@@ -28,12 +28,12 @@ export default class CreateCompanyDetails extends Component {
                       Company Responsible
                     </h6>
                   </div>
-                  <div className="col-sm-6 mb-3">
+                  <div className="col-sm-6 mb-3 mt-1">
                     <label className="form-label" for="event-address">
                       Responsible Name
                     </label>
                     <input
-                      className="form-control"
+                      className="form-control mt-2"
                       id="event-address"
                       type="text"
                       placeholder="Type name here"
@@ -42,7 +42,17 @@ export default class CreateCompanyDetails extends Component {
                   <div className="col-sm-6 mb-3">
                     <label className="form-label" for="event-address">
                       Responsible Email
+                      <button
+                        class="btn btn-secondary btn-sm m-1"
+                        type="button"
+                        data-toggle="tooltip"
+                        data-placement="right"
+                        title="This person will appear as 'CC' in every email sent in this company."
+                      >
+                        <i class="fas fa-question-circle"></i>
+                      </button>
                     </label>
+
                     <input
                       className="form-control"
                       id="event-address"

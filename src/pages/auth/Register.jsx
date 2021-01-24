@@ -38,6 +38,13 @@ class Register extends Component {
                   <div className="mb-3">
                     <input
                       className="form-control"
+                      type="text"
+                      placeholder="Surname"
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <input
+                      className="form-control"
                       type="email"
                       placeholder="Email address"
                     />
