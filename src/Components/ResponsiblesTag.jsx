@@ -2,10 +2,11 @@ import React from "react";
 
 function ResponsiblesTag() {
   return (
-    <div class="card" >
+    <div class="card">
       <div class="card-header d-flex flex-between-center bg-light py-2">
         <h6 class="mb-0">Responsibles</h6>
         <div class="dropdown font-sans-serif btn-reveal-trigger">
+          {/* MODAL EDIT */}
           <button
             class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal dropdown-caret-none"
             type="button"
@@ -21,12 +22,89 @@ function ResponsiblesTag() {
             class="dropdown-menu dropdown-menu-right border py-2"
             aria-labelledby="dropdown-active-user"
           >
-            <a class="dropdown-item" href="#!">
+            <button
+              type="button"
+              class="dropdown-item"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
               Edit
-            </a>
+            </button>
+            {/* <!-- Modal --> */}
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="responsibleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="responsibleModalLabel">
+                Edit responsibles
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <form className="row">
+            <div className="col-3 mb-3 text-lg-right">
+                          <label className="form-label" for="company">
+                            Company responsible
+                          </label>
+                        </div>
+                        <div className="col-6 col-sm-7 mb-3">
+                          <input
+                            className="form-control form-control-sm"
+                            id="company"
+                            type="text"
+                          />
+                        </div>
+                        <div className="col-3 mb-3 text-lg-right">
+                          <label className="form-label" for="company">
+                            Item responsible
+                          </label>
+                        </div>
+                        <div className="col-6 col-sm-7 mb-3">
+                          <input
+                            className="form-control form-control-sm"
+                            id="company"
+                            type="text"
+                          />
+                        </div>
+                        </form>
+            
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
           </div>
         </div>
       </div>
+
+          </div>
+        </div>
+      </div>
+
+      
+
+      {/* ITEM RESPONSIBLES */}
       <div class="card-body py-2">
         <div class="d-flex align-items-center mb-3">
           <div class="flex-1 ml-3">

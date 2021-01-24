@@ -19,7 +19,7 @@ export default class CompanyDetails extends Component {
   };
 
   GetCompanyName = () => {
-    const findCompany = "El nombre de la empresa";
+    const findCompany = "Company name";
     this.setState({companyName: findCompany});
   };
 

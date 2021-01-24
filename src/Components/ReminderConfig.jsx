@@ -32,19 +32,6 @@ function ReminderConfig() {
                 <span class="fas fa-times"></span>
               </a>
             </div>
-            <div class="border px-2 rounded-lg d-flex flex-between-center bg-white my-1 fs--1">
-              <span class="fs-1 far fa-file-archive"></span>
-              <span class="ml-2">coffee.zip (342kb)</span>
-              <a
-                class="text-300 p-1 ml-6"
-                href="#!"
-                data-toggle="tooltip"
-                data-placement="right"
-                title="Detach"
-              >
-                <span class="fas fa-times"></span>
-              </a>
-            </div>
           </div>
         </div>
       </div>
