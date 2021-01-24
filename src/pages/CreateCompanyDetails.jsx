@@ -43,7 +43,7 @@ export default class CreateCompanyDetails extends Component {
                     <label className="form-label" for="event-address">
                       Responsible Email
                       <button
-                        class="btn btn-secondary btn-sm m-1"
+                        class="btn btn-sm m-1"
                         type="button"
                         data-toggle="tooltip"
                         data-placement="right"

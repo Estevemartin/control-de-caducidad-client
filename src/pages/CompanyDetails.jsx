@@ -59,7 +59,9 @@ export default class CompanyDetails extends Component {
           </div>
         </div>
 
-        <div className="row-cols-md-3 d-md-flex justify-content-between">
+        {/* DESKTOP VERSION ORDER */}
+        
+        <div className="row-cols-md-3 d-none d-md-flex justify-content-between">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
             {/* UPCOMING EXPIRATIONS IN PERIOD CARD */}
             <div className="col-md-12 col-sm-12 item-details-top-half-item">
@@ -71,10 +73,30 @@ export default class CompanyDetails extends Component {
           {/* ITEMS */}
             <ItemAddAndList />
           </div>
+          
         </div>
-
+        
         {/* UPCOMING EXPIRATIONS BY EMPLOYEE */}
         <UpcomingExpirationsEmployee />
+       
+
+        {/* MOBILE VERSION ORDER */}
+
+        <div className="row-cols-md-3 d-md-none justify-content-between">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
+            {/* UPCOMING EXPIRATIONS IN PERIOD CARD */}
+            <div className="col-md-12 col-sm-12 item-details-top-half-item">
+              <ExpirationsInPeriod />
+            </div>
+          </div>
+
+          <div className="col-md-8 col-sm-12">
+          {/* ITEMS */}
+            <ItemAddAndList />
+          </div>
+          
+        </div>
+        
       </div>
     );
   }
