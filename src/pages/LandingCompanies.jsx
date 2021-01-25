@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
+import SideNavbar from "../Components/navbars/SideNavbar";
+import TopNavbar from "../Components/navbars/TopNavbar";
 
 class LandingCompanies extends Component {
   render() {
     return (
+      <div className="container">
+        <SideNavbar />
+        <div className="content">
+          <TopNavbar />
           <div className="card mb-3">
             <div className="card-header bg-light">
               <h5 className="mb-0">Companies</h5>
@@ -31,8 +37,10 @@ class LandingCompanies extends Component {
               </div>
             </div>
           </div>
+        </div>
+      </div>
     );
   }
 }
 
-export default withAuth(LandingCompanies) 
+export default withAuth(LandingCompanies);

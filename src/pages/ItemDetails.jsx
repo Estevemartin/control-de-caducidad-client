@@ -7,7 +7,8 @@ import CompanyNavbar from "../Components/CompanyNavbar";
 import ReminderConfig from "../Components/ReminderConfig";
 import ResponsiblesTag from "../Components/ResponsiblesTag";
 import LastDeliveries from "../Components/LastDeliveries";
-
+import SideNavbar from "../Components/navbars/SideNavbar";
+import TopNavbar from "../Components/navbars/TopNavbar";
 
 import { withAuth } from "../lib/AuthProvider";
 
@@ -219,20 +220,20 @@ class ItemDetails extends Component {
                           </select>
                         </div>
                         <div className="col-auto container">
-                      <div className="form-check mb-0">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="basic-checkbox"
-                        />
-                        <label
-                          className="form-check-label"
-                          for="basic-checkbox"
-                        >
-                          Update previous expiry dates to new item duration
-                        </label>
-                      </div>
-                    </div>
+                          <div className="form-check mb-0">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              id="basic-checkbox"
+                            />
+                            <label
+                              className="form-check-label"
+                              for="basic-checkbox"
+                            >
+                              Update previous expiry dates to new item duration
+                            </label>
+                          </div>
+                        </div>
                       </form>
                       <div className="border-dashed-bottom my-4"></div>
                     </div>
@@ -262,43 +263,49 @@ class ItemDetails extends Component {
     const { itemName } = this.state;
     return (
       <div>
-        {/* TOP COMPANY NAVBAR */}
-        <CompanyNavbar theName={itemName} button={this.Button()} />
+        <div className="container">
+          <SideNavbar />
+          <div className="content">
+            <TopNavbar />
+            {/* TOP COMPANY NAVBAR */}
+            <CompanyNavbar theName={itemName} button={this.Button()} />
 
-        {/* CONTENT */}
-        <div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-            {/* CONTROLLED ITEMS CARD */}
-            <div className="col-md-4">
-              <ControlledItemsCard />
+            {/* CONTENT */}
+            <div>
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                {/* CONTROLLED ITEMS CARD */}
+                <div className="col-md-4">
+                  <ControlledItemsCard />
+                </div>
+                {/* EXPIRED ITEMS CARD */}
+                <div className="col-md-4 mb-3">
+                  <ExpiredItemsCard />
+                </div>
+                {/* RESPONSIBLES */}
+                <div className="col-md-4">
+                  <ResponsiblesTag />
+                </div>
+              </div>
             </div>
-            {/* EXPIRED ITEMS CARD */}
-            <div className="col-md-4 mb-3">
-              <ExpiredItemsCard />
+
+            {/* MONTHLY EXPIRATIONS CHART */}
+
+            <div className="item-details-right-side-container w-100 h-100 mt-2">
+              <MonthlyExpirationsChart />
             </div>
-            {/* RESPONSIBLES */}
-            <div className="col-md-4">
-              <ResponsiblesTag />
-            </div>
-          </div>
-        </div>
 
-        {/* MONTHLY EXPIRATIONS CHART */}
+            {/* UPCOMING EXPIRATIONS BY EMPLOYEE */}
 
-        <div className="item-details-right-side-container w-100 h-100 mt-2">
-          <MonthlyExpirationsChart />
-        </div>
-
-        {/* UPCOMING EXPIRATIONS BY EMPLOYEE */}
-
-        <div>
-          <UpcomingExpirationsEmployee />
-          <div className="row row-cols-1 row-cols-md-2 item-details-bottom-section">
-            <div className="col-12 col-md-8">
-              <ReminderConfig />
-            </div>
-            <div className="col-12 col-md-4">
-              <LastDeliveries />
+            <div>
+              <UpcomingExpirationsEmployee />
+              <div className="row row-cols-1 row-cols-md-2 item-details-bottom-section">
+                <div className="col-12 col-md-8">
+                  <ReminderConfig />
+                </div>
+                <div className="col-12 col-md-4">
+                  <LastDeliveries />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -307,4 +314,4 @@ class ItemDetails extends Component {
   }
 }
 
-export default withAuth(ItemDetails) 
+export default withAuth(ItemDetails);

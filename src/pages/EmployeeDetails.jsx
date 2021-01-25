@@ -3,7 +3,8 @@ import UpcomingExpirationsItem from "../Components/UpcomingExpirationsItem";
 import ControlledItemsCard from "../Components/ControlledItemsCard";
 import ExpiredItemsCard from "../Components/ExpiredItemsCard";
 import CompanyNavbar from "../Components/CompanyNavbar";
-
+import SideNavbar from "../Components/navbars/SideNavbar";
+import TopNavbar from "../Components/navbars/TopNavbar";
 
 import { withAuth } from "../lib/AuthProvider";
 
@@ -150,7 +151,6 @@ class EmployeeDetails extends Component {
                             placeholder="Year"
                           />
                         </div>
-                        
                       </form>
                       <div className="border-dashed-bottom my-4"></div>
                     </div>
@@ -176,34 +176,38 @@ class EmployeeDetails extends Component {
     );
   };
 
-
   render() {
     const { employeeName } = this.state;
     return (
       <div className="container">
-        {/* TOP COMPANY NAVBAR */}
-        <CompanyNavbar theName={employeeName} button={this.Button()}/>
+        <SideNavbar />
+        <div className="content">
+          <TopNavbar />
+          <div className="container">
+            {/* TOP COMPANY NAVBAR */}
+            <CompanyNavbar theName={employeeName} button={this.Button()} />
 
-        
-        <div className="row ">
-          {/* CONTROLLED ITEMS CARD */}
-          <div className="col col-xl-5 mb-3">
-            <ControlledItemsCard />
+            <div className="row ">
+              {/* CONTROLLED ITEMS CARD */}
+              <div className="col col-xl-5 mb-3">
+                <ControlledItemsCard />
+              </div>
+              {/* EXPIRED ITEMS CARD */}
+              <div className="col col-xl-5 mb-3">
+                <ExpiredItemsCard />
+              </div>
+            </div>
+
+            {/* UPCOMING EXPIRATIONS BY EMPLOYEE */}
+
+            <div className="">
+              <UpcomingExpirationsItem />
+            </div>
           </div>
-          {/* EXPIRED ITEMS CARD */}
-          <div className="col col-xl-5 mb-3">
-            <ExpiredItemsCard />
-          </div>
-        </div>
-
-        {/* UPCOMING EXPIRATIONS BY EMPLOYEE */}
-
-        <div className="">
-          <UpcomingExpirationsItem />
         </div>
       </div>
     );
   }
 }
 
-export default withAuth(EmployeeDetails) 
+export default withAuth(EmployeeDetails);

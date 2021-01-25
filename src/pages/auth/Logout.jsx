@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../../lib/AuthProvider";
 
-function Logout() {
+function Logout(props) {
+  const { logout } = props;
+
   return (
-    <div className="container">
+    <div className="container" onLoad={logout}>
       <div className="row flex-center min-vh-100 py-6">
         <div className="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
           <Link className="d-flex flex-center mb-4" to="/">
