@@ -19,9 +19,6 @@ import ProfileSettings from './pages/ProfileSettings';
 import CompanyDetails from './pages/CompanyDetails';  
 import EmployeeDetails from './pages/EmployeeDetails';  
 import ItemDetails from './pages/ItemDetails';      
-
-import SideNavbar from './Components/navbars/SideNavbar';
-import TopNavbar from './Components/navbars/TopNavbar';
 import Spinner from './Components/Spinner';
 
 function App() {

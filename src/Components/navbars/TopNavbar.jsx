@@ -5,10 +5,6 @@ import { withAuth } from "../../lib/AuthProvider";
 function TopNavbar(props) {
   const { logout, isLoggedin } = props;
 
-  function logoutRedirect() {
-    return logout && props
-  }
-
     return (
       <>
       {isLoggedin ? (

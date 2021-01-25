@@ -42,7 +42,19 @@ class ProfileSettings extends Component {
     this.setState({ [name]: value });
   };
 
+  handleFormSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const { user } = this.state
+      await editUser({user})
+      this.props.history.push('/')
+    } catch (error) {
+      console.log(error, "the error originated here");
+    }
+  };
+
   render() {
+    const { user } = this.state;
     return (
       <div className="container">
         <SideNavbar />
@@ -70,21 +82,21 @@ class ProfileSettings extends Component {
                         <input
                           className="form-control"
                           type="text"
-                          placeholder="Name"
+                          placeholder={user.name}
                         />
                       </div>
                       <div className="mb-3">
                         <input
                           className="form-control"
                           type="text"
-                          placeholder="Surname"
+                          placeholder={user.surname}
                         />
                       </div>
                       <div className="mb-3">
                         <input
                           className="form-control"
                           type="email"
-                          placeholder="Email address"
+                          placeholder={user.email}
                         />
                       </div>
                       <div className="row gx-3">

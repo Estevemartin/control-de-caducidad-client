@@ -8,6 +8,8 @@ class Auth {
     });
   }
 
+  /* AUTHENTICATION */
+
   signup({ name, surname, password, email }) {
     return this.auth
       .post("/signup", { name, surname, password, email })
@@ -27,7 +29,22 @@ class Auth {
   me() {
     return this.auth.get("/me").then((response) => response.data);
   }
+
+
+  /* USER DETAILS */
+
+editUser = async({name, surname, email, password }) => {
+  try {
+      const modifiedUser = await this.auth.put(`/profile/edit`, {name, surname, email, password})
+      return modifiedUser.data
+  } catch (error) {
+      console.log(error)
+  }
 }
+
+}
+
+
 
 const axiosRequestFunctions = new Auth();
 
