@@ -1,8 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { withAuth } from "../../lib/AuthProvider";
 
 class Login extends Component {
+  state = { email: "", password: "" };handleFormSubmit = event => {
+    event.preventDefault();
+    const { email, password } = this.state;
+    this.props.login({ email, password })
+  };
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
   render() {
+    const { email, password } = this.state;
     return (
       <div className="container">
         <div className="row flex-center min-vh-100 py-6">
@@ -27,19 +40,25 @@ class Login extends Component {
                     </span>
                   </div>
                 </div>
-                <form>
+                <form onSubmit={this.handleFormSubmit}>
                   <div className="mb-3">
                     <input
                       className="form-control"
                       type="email"
+                      name="email"
+                      value={email}
                       placeholder="Email address"
+                      onChange={(e) => this.handleChange(e)}
                     />
                   </div>
                   <div className="mb-3">
                     <input
                       className="form-control"
                       type="password"
+                      name="password"
+                      value={password}
                       placeholder="Password"
+                      onChange={(e) => this.handleChange(e)}
                     />
                   </div>
                   <div className="row flex-between-center">
@@ -83,4 +102,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withAuth(Login);

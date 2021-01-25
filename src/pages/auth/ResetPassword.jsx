@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withAuth } from "../../lib/AuthProvider";
 
 function ResetPassword() {
   return (
@@ -48,4 +49,4 @@ function ResetPassword() {
   );
 }
 
-export default ResetPassword;
+export default withAuth(ResetPassword);

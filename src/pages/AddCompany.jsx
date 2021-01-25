@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { withAuth } from "../lib/AuthProvider";
 
 class AddCompany extends Component {
   constructor(props) {
@@ -59,4 +60,4 @@ class AddCompany extends Component {
   }
 }
 
-export default AddCompany;
+export default withAuth(AddCompany);

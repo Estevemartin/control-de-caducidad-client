@@ -4,7 +4,10 @@ import ControlledItemsCard from "../Components/ControlledItemsCard";
 import ExpiredItemsCard from "../Components/ExpiredItemsCard";
 import CompanyNavbar from "../Components/CompanyNavbar";
 
-export default class EmployeeDetails extends Component {
+
+import { withAuth } from "../lib/AuthProvider";
+
+class EmployeeDetails extends Component {
   state = {
     employeeName: "",
   };
@@ -202,3 +205,5 @@ export default class EmployeeDetails extends Component {
     );
   }
 }
+
+export default withAuth(EmployeeDetails) 

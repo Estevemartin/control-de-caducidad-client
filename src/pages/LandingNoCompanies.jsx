@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {Link} from 'react-router-dom';
+import { withAuth } from "../lib/AuthProvider";
 
 function LandingNoCompanies() {
     return (
@@ -19,4 +21,4 @@ function LandingNoCompanies() {
     )
 }
 
-export default LandingNoCompanies
+export default withAuth(LandingNoCompanies)

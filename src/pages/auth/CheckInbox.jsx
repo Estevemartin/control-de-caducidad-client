@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withAuth } from "../../lib/AuthProvider";
 
 function CheckInbox(props) {
   //TODO hacer función para que muestre el mail del usuario
@@ -54,4 +55,4 @@ function CheckInbox(props) {
   );
 }
 
-export default CheckInbox;
+export default withAuth(CheckInbox);

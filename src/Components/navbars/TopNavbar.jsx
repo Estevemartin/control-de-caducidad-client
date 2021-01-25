@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { withAuth } from "../../lib/AuthProvider";
 
-function TopNavbar() {
+function TopNavbar(props) {
+  const { logout, isLoggedin } = props;
+
     return (
+      <>
+      {isLoggedin ? (
       <nav className="navbar navbar-light navbar-glass navbar-top navbar-expand">
         <button
           className="btn navbar-toggler-humburger-icon navbar-toggler mr-1 mr-sm-3"
@@ -50,15 +55,17 @@ function TopNavbar() {
                 <Link className="dropdown-item" to="/profile-settings">
                   Profile settings
                 </Link>
-                <Link className="dropdown-item" to="/logout">
+                <Link className="dropdown-item" to="/logout" onClick={logout}>
                   Logout
                 </Link>
               </div>
             </div>
           </li>
         </ul>
-      </nav>
+      </nav>) : ""
+      }
+      </>
     )
 }
 
-export default TopNavbar
+export default withAuth(TopNavbar)

@@ -6,9 +6,12 @@ import ExpiredItemsCard from "../Components/ExpiredItemsCard";
 import CompanyNavbar from "../Components/CompanyNavbar";
 import ExpirationsInPeriod from "../Components/ExpirationsInPeriod";
 import ItemAddAndList from "../Components/ItemAddAndList";
+
+
+import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
 
-export default class CompanyDetails extends Component {
+class CompanyDetails extends Component {
   state = {
     companyName: "",
   };
@@ -96,3 +99,5 @@ export default class CompanyDetails extends Component {
     );
   }
 }
+
+export default withAuth(CompanyDetails)

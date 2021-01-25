@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { withAuth } from "../lib/AuthProvider";
 
-export default class CreateCompanyDetails extends Component {
+class CreateCompanyDetails extends Component {
   render() {
     return (
       <div className="row flex-center py-5">
@@ -157,3 +158,5 @@ export default class CreateCompanyDetails extends Component {
     );
   }
 }
+
+export default  withAuth(CreateCompanyDetails)

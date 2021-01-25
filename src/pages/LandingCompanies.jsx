@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { withAuth } from "../lib/AuthProvider";
 
-export default class LandingCompanies extends Component {
+class LandingCompanies extends Component {
   render() {
     return (
           <div className="card mb-3">
@@ -33,3 +34,5 @@ export default class LandingCompanies extends Component {
     );
   }
 }
+
+export default withAuth(LandingCompanies) 

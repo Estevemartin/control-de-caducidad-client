@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { withAuth } from "../lib/AuthProvider";
 
-export default class EditCompanyDetails extends Component {
+class EditCompanyDetails extends Component {
 
   /* TODO: bring details from backend */
 
@@ -160,3 +161,5 @@ export default class EditCompanyDetails extends Component {
     );
   }
 }
+
+export default withAuth(EditCompanyDetails)

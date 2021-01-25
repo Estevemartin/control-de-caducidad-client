@@ -8,7 +8,10 @@ import ReminderConfig from "../Components/ReminderConfig";
 import ResponsiblesTag from "../Components/ResponsiblesTag";
 import LastDeliveries from "../Components/LastDeliveries";
 
-export default class ItemDetails extends Component {
+
+import { withAuth } from "../lib/AuthProvider";
+
+class ItemDetails extends Component {
   state = {
     itemName: "",
   };
@@ -215,6 +218,21 @@ export default class ItemDetails extends Component {
                             <option value="Years">Years in advace</option>
                           </select>
                         </div>
+                        <div className="col-auto container">
+                      <div className="form-check mb-0">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id="basic-checkbox"
+                        />
+                        <label
+                          className="form-check-label"
+                          for="basic-checkbox"
+                        >
+                          Update previous expiry dates to new item duration
+                        </label>
+                      </div>
+                    </div>
                       </form>
                       <div className="border-dashed-bottom my-4"></div>
                     </div>
@@ -288,3 +306,5 @@ export default class ItemDetails extends Component {
     );
   }
 }
+
+export default withAuth(ItemDetails) 

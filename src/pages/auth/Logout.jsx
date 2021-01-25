@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withAuth } from "../../lib/AuthProvider";
 
 function Logout() {
   return (
@@ -43,4 +44,4 @@ function Logout() {
   );
 }
 
-export default Logout;
+export default withAuth(Logout);

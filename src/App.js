@@ -31,30 +31,30 @@ function App() {
       <main className="main" id="top">
         <Switch>
         {/* Componentes sin navbar */}
-        <Redirect from exact path="/" to="/login"/>
-        <Route /*AnonRoute */ exact path="/login" component={Login}/>
-        <Route /*AnonRoute*/ exact path="/logout" component={Logout}/>
-        <AnonRoute /*AnonRoute*/ exact path="/register" component={Register}/>
-        <Route /*AnonRoute*/ exact path="/forgot" component={ForgotPassword}/>
-        <Route /*AnonRoute*/ exact path="/reset" component={ResetPassword}/>
-        <Route /*AnonRoute*/ exact path="/inbox-pass" component={CheckInbox}/>
-        <Route /*AnonRoute*/ exact path="/inbox-activate" component={CheckInbox}/>
-        <Route /*AnonRoute*/ exact path="/spinner" component={Spinner}/>
+        {/* <Redirect from exact path="/" to="/login"/> */}
+        <AnonRoute exact path="/" component={Login}/>
+        <AnonRoute exact path="/logout" component={Logout}/>
+        <AnonRoute exact path="/register" component={Register}/>
+        <AnonRoute exact path="/forgot" component={ForgotPassword}/>
+        <AnonRoute exact path="/reset" component={ResetPassword}/>
+        <AnonRoute exact path="/inbox-pass" component={CheckInbox}/>
+        <AnonRoute exact path="/inbox-activate" component={CheckInbox}/>
+        <AnonRoute exact path="/spinner" component={Spinner}/>
         
         {/* A partir de aquí, los componentes que hay llevarán la navbar */}
           <div className="container">
             <SideNavbar />
             <div className="content">
               <TopNavbar />
-              <Route /*PrivateRoute*/ exact path="/user-menu" component={LandingNoCompanies}/>
-              <Route /*PrivateRoute*/ exact path="/add-company" component={AddCompany}/>
-              <Route /*PrivateRoute*/ exact path="/create-company-details" component={CreateCompanyDetails}/>
-              <Route /*PrivateRoute*/ exact path="/edit-company" component={EditCompanyDetails}/>
-              <Route /*PrivateRoute*/ exact path="/profile-settings" component={ProfileSettings}/>
-              <Route /*PrivateRoute*/ exact path="/user-menu-companies" component={LandingCompanies}/>
-              <Route /*PrivateRoute*/ exact path="/company-details" component={CompanyDetails}/>
-              <Route /*PrivateRoute*/ exact path="/item-details" component={ItemDetails}/>
-              <Route /*PrivateRoute*/ exact path="/employee-details" component={EmployeeDetails}/>
+              <PrivateRoute exact path="/landing" component={LandingNoCompanies}/>
+              <PrivateRoute exact path="/add-company" component={AddCompany}/>
+              <PrivateRoute exact path="/create-company-details" component={CreateCompanyDetails}/>
+              <PrivateRoute exact path="/edit-company" component={EditCompanyDetails}/>
+              <PrivateRoute exact path="/profile-settings" component={ProfileSettings}/>
+              <PrivateRoute exact path="/user-menu-companies" component={LandingCompanies}/>
+              <PrivateRoute exact path="/company-details" component={CompanyDetails}/>
+              <PrivateRoute exact path="/item-details" component={ItemDetails}/>
+              <PrivateRoute exact path="/employee-details" component={EmployeeDetails}/>
             </div>
           </div>
         </Switch>

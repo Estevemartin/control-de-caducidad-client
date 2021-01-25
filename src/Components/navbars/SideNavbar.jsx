@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withAuth } from "../../lib/AuthProvider";
 
 function SideNavbar(props) {
   return (
@@ -161,4 +162,4 @@ function SideNavbar(props) {
   );
 }
 
-export default SideNavbar;
+export default withAuth(SideNavbar);
