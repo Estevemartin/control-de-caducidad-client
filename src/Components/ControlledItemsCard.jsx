@@ -13,7 +13,7 @@ export default class ControlledItemsCard extends Component {
             <h6>
             {this.props.titleControlled ? this.props.titleControlled : "Controlled"}
               <span className="badge badge-soft-success rounded-pill ml-2">
-              {this.props.percentage ? this.props.percentage : "% pending"}
+              {this.props.percentage ? this.props.percentage : ""}
               </span>
             </h6>
             <div

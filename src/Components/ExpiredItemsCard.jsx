@@ -9,7 +9,7 @@ export default class ExpiredItemsCard extends Component {
           <h6>
           {this.props.titleExpired ? this.props.titleExpired : "Expired"}
             <span className="badge badge-soft-warning rounded-pill ml-2">
-              {this.props.percentage ? this.props.percentage : "% pending"}
+              {this.props.percentage ? this.props.percentage : ""}
             </span>
           </h6>
           <div

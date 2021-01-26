@@ -10,9 +10,9 @@ class Auth {
 
   /* AUTHENTICATION */
 
-  signup({ name, surname, password, email }) {
+  signup({ name, surname, password, email, repeatPassword }) {
     return this.auth
-      .post("/signup", { name, surname, password, email })
+      .post("/signup", { name, surname, password, email, repeatPassword })
       .then(({ data }) => data);
   }
 
@@ -31,16 +31,7 @@ class Auth {
   }
 
 
-  /* USER DETAILS */
-
-editUser = async({name, surname, email, password }) => {
-  try {
-      const modifiedUser = await this.auth.put(`/profile/edit`, {name, surname, email, password})
-      return modifiedUser.data
-  } catch (error) {
-      console.log(error)
-  }
-}
+  
 
 }
 

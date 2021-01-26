@@ -1,5 +1,5 @@
 import './App.css';
-import {Switch, Redirect} from 'react-router-dom';
+import {Switch, Redirect, Route} from 'react-router-dom';
 import AuthProvider from './lib/AuthProvider'
 import AnonRoute from "../src/Components/componentRoutes/AnonRoute";
 import PrivateRoute from "../src/Components/componentRoutes/PrivateRoute";
@@ -29,7 +29,7 @@ function App() {
         <Switch>
           {/* <Redirect from exact path="/" to="/login"/> */}
           <AnonRoute exact path="/" component={Login}/>
-          <AnonRoute exact path="/logout" component={Logout}/>
+          <Route exact path="/logout" component={Logout}/>
           <AnonRoute exact path="/register" component={Register}/>
           <AnonRoute exact path="/forgot" component={ForgotPassword}/>
           <AnonRoute exact path="/reset" component={ResetPassword}/>

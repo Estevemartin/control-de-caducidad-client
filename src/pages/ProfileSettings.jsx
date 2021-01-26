@@ -3,9 +3,10 @@ import SideNavbar from "../Components/navbars/SideNavbar";
 import TopNavbar from "../Components/navbars/TopNavbar";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
+import userService from "../lib/user-service";
 
 class ProfileSettings extends Component {
-  /* TODO: bring details from backend */
+  /* TODO: bring details to backend */
   constructor(props) {
     super(props);
   }
@@ -46,7 +47,7 @@ class ProfileSettings extends Component {
     try {
       event.preventDefault();
       const { user } = this.state
-      await editUser({user})
+      await userService.editUser({user})
       this.props.history.push('/')
     } catch (error) {
       console.log(error, "the error originated here");

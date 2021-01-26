@@ -4,7 +4,33 @@ import SideNavbar from "../Components/navbars/SideNavbar";
 import TopNavbar from "../Components/navbars/TopNavbar";
 
 class CreateCompanyDetails extends Component {
+  constructor(props){
+    super(props); 
+    this.state = { 
+        name: "",
+        responsible: {
+          respName: "", 
+          email: "",
+        }
+    }
+  }
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    const { name, responsible: {respName, email}} = this.state;
+    this.props.addCompany3 ({ name, responsible: {name: respName, email} })
+    this.props.history.push(`/landing-companies`);
+  }
+
+   handleChange = event => {
+      const { name, value } = event.target;
+      this.setState({ [name]: value });
+      };
+
+
+
   render() {
+    const { name, responsible } = this.state;
     return (
       <div className="container">
         <SideNavbar />
@@ -17,7 +43,7 @@ class CreateCompanyDetails extends Component {
                   <h5 className="mb-0">Company Details</h5>
                 </div>
                 <div className="card-body bg-light">
-                  <form>
+                  <form onSubmit={this.handleFormSubmit}>
                     <div className="row gx-2">
                       <div className="col-12 mb-3">
                         <label className="form-label" for="event-name">
@@ -25,9 +51,13 @@ class CreateCompanyDetails extends Component {
                         </label>
                         <input
                           className="form-control"
-                          id="event-name"
+                          id="name"
+                          name="name"
                           type="text"
                           placeholder="Type your company name here"
+                          value={name} 
+                          onChange={ e => this.handleChange(e)} 
+                          required
                         />
                       </div>
                       <div className=" col-12 mb-3">
@@ -41,9 +71,14 @@ class CreateCompanyDetails extends Component {
                         </label>
                         <input
                           className="form-control mt-2"
-                          id="event-address"
+                          id="respName"
+                          name="respName"
                           type="text"
                           placeholder="Type name here"
+                          value={responsible.respName} 
+                          onChange={ e => 
+                          this.handleChange(e)} 
+                          required
                         />
                       </div>
                       <div className="col-sm-6 mb-3">
@@ -62,9 +97,13 @@ class CreateCompanyDetails extends Component {
 
                         <input
                           className="form-control"
-                          id="event-address"
+                          id="email"
+                          name="email"
                           type="text"
                           placeholder="Type email here"
+                          value={responsible.email} 
+                          onChange={ e => this.handleChange(e)} 
+                          required
                         />
                       </div>
                     </div>

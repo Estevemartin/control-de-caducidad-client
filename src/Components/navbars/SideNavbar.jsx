@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../../lib/AuthProvider";
 
 function SideNavbar(props) {
+
+  const { isLoggedin } = props;
   return (
-      <nav className="navbar navbar-vibrant navbar-vertical navbar-expand-xl">
+    <>
+    {isLoggedin ? (
+      <nav className="navbar navbar-vibrant navbar-vertical navbar-expand-xl ">
         {/* HAMBURGER MENU */}
         <div className="d-flex align-items-center">
           <div className="toggle-icon-wrapper">
@@ -30,7 +34,7 @@ function SideNavbar(props) {
             </div>
           </a>
         </div>
-        <div className="collapse navbar-collapse" id="navbarVerticalCollapse">
+        <div className="collapse navbar-collapse sidebaryeso" id="navbarVerticalCollapse">
           <div className="navbar-vertical-content scrollbar ">
             <ul className="navbar-nav flex-column">
               <li className="nav-item">
@@ -158,7 +162,8 @@ function SideNavbar(props) {
             </ul>
           </div>
         </div>
-      </nav>
+      </nav>) : ""}
+      </>
   );
 }
 

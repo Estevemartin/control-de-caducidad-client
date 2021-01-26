@@ -11,17 +11,10 @@ function LandingNoCompanies() {
       <SideNavbar />
       <div className="content">
         <TopNavbar />
-        <div className="card mt-4">
+        <div className="card">
           <div className="card-body overflow-hidden p-lg-6 ">
-            <div className="row align-items-center">
-              <div className="col-lg-6">
-                <img
-                  className="img-fluid"
-                  src="../assets/img/illustrations/4.png"
-                  alt=""
-                />
-              </div>
-              <div className="col-lg-6 pl-lg-4 my-5 text-center text-lg-left">
+            <div className="row align-items-center justify-content-center">
+            <div className="col-lg-6 pl-lg-4 col-md-6 my-5 text-center text-lg-left">
                 <h3>
                   {" "}
                   <Link to="/create-company-details">
@@ -41,6 +34,14 @@ function LandingNoCompanies() {
                   Add an Existing Company
                 </Link>
               </div>
+              <div className="col-lg-6 col-md-4">
+                <img
+                  className="img-thumbnail"
+                  src="../assets/img/illustrations/4.png"
+                  alt=""
+                />
+              </div>
+              
             </div>
           </div>
         </div>

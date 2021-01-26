@@ -30,7 +30,7 @@ function Logout(props) {
                   Thanks for using MPA Solutions. You are <br />
                   now successfully signed out.
                 </p>
-                <Link className="btn btn-primary btn-sm mt-3" to="/login">
+                <Link className="btn btn-primary btn-sm mt-3" to="/">
                   <span
                     className="fas fa-chevron-left mr-1"
                     data-fa-transform="shrink-4 down-1"

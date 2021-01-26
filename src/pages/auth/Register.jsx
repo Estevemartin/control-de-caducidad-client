@@ -59,7 +59,7 @@ class Register extends Component {
 
   checkForErrors = async () => {
     const { name, surname, password, email, isError } = this.state;
-    if (isError.name === "" && isError.password === "") {
+    if (isError.name === "" && isError.password === "" && isError.repeatPassword === "" && isError.email === "") {
       await this.props.signup({ name, surname, password, email });
     } else {
       this.setState({
@@ -69,14 +69,12 @@ class Register extends Component {
   };
 
   handleFormSubmit = async (event) => {
-    const { name, surname, password, email } = this.state;
-    await this.props.signup({ name, surname, password, email });
-    /* try {
+    try {
       event.preventDefault();
       await this.checkForErrors();
     } catch (error) {
       console.log(error);
-    } */
+    }
   };
 
   render() {
@@ -191,7 +189,7 @@ class Register extends Component {
                       type="checkbox"
                       id="basic-register-checkbox"
                     />
-                    <label className="form-label" for="basic-register-checkbox">
+                    <label className="form-label" name="basic-register-checkbox">
                       I accept the <Link to="#!">terms </Link>and{" "}
                       <Link to="#!">privacy policy</Link>
                     </label>
