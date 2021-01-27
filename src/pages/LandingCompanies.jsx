@@ -2,10 +2,40 @@ import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import SideNavbar from "../Components/navbars/SideNavbar";
 import TopNavbar from "../Components/navbars/TopNavbar";
+import LandingNoCompanies from "./LandingNoCompanies";
+import companyservice from "../lib/company-service"
 
 class LandingCompanies extends Component {
+  constructor(props){
+    super(props); 
+    this.state = { 
+      companyName: "",
+        responsible: {
+          respName: "", 
+          email: "",
+        }
+    }
+  }
+
+  componentDidMount = async () => {
+    const user = this.props.user;
+    const theCompany = await companyservice.getCompany(user.companies.id)
+    this.setState({
+      companyName: theCompany.companyName,
+        responsible: {
+          respName: theCompany.responsible.respName, 
+          email: theCompany.responsible.email,
+        }
+    })
+  }
+
+
+
   render() {
+    const { companyName } = this.state;
     return (
+      <>
+      { !companyName ? <LandingNoCompanies /> :
       <div className="container">
         <SideNavbar />
         <div className="content">
@@ -39,6 +69,8 @@ class LandingCompanies extends Component {
           </div>
         </div>
       </div>
+       }
+       </>
     );
   }
 }

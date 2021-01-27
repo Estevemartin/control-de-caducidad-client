@@ -1,36 +1,72 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
+import companyservice from "../lib/company-service";
 import SideNavbar from "../Components/navbars/SideNavbar";
 import TopNavbar from "../Components/navbars/TopNavbar";
 
 class CreateCompanyDetails extends Component {
-  constructor(props){
-    super(props); 
-    this.state = { 
-        name: "",
-        responsible: {
-          respName: "", 
-          email: "",
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      companyName: "",
+      responsible: "",
+      respName: "",
+      email: "",
+      invitationCode: "",
+    };
+  }
+  
+    getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-  }
+    generateProductKey() {
+      var tokens = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+        chars = 5,
+        segments = 4,
+        keyString = "";
+      for (var i = 0; i < segments; i++) {
+        var segment = "";
+        for (var j = 0; j < chars; j++) {
+          var k = this.getRandomInt(0, 35);
+          segment += tokens[k];
+        }
+        keyString += segment;
+        if (i < segments - 1) {
+          keyString += "-";
+        }
+      }
+      return keyString;
+    }
+  
+    componentDidMount = async () => {
+      const code = await this.generateProductKey()
+      this.setState({ invitationCode: code });
+      console.log(code, 'el code')
+    };
+  
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
-    const { name, responsible: {respName, email}} = this.state;
-    this.props.addCompany3 ({ name, responsible: {name: respName, email} })
-    this.props.history.push(`/landing-companies`);
-  }
+    const { companyName, responsible, respName, email, invitationCode } = this.state;
+    companyservice.createCompany({
+      companyName,
+      responsible,
+      respName,
+      email,
+      invitationCode,
+    });
+    this.props.history.push(`/landing`);
+  };
 
-   handleChange = event => {
-      const { name, value } = event.target;
-      this.setState({ [name]: value });
-      };
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
-
+  
 
   render() {
-    const { name, responsible } = this.state;
+    const { companyName, responsible, respName, email } = this.state;
     return (
       <div className="container">
         <SideNavbar />
@@ -52,11 +88,11 @@ class CreateCompanyDetails extends Component {
                         <input
                           className="form-control"
                           id="name"
-                          name="name"
+                          name="companyName"
                           type="text"
                           placeholder="Type your company name here"
-                          value={name} 
-                          onChange={ e => this.handleChange(e)} 
+                          value={companyName}
+                          onChange={(e) => this.handleChange(e)}
                           required
                         />
                       </div>
@@ -75,9 +111,8 @@ class CreateCompanyDetails extends Component {
                           name="respName"
                           type="text"
                           placeholder="Type name here"
-                          value={responsible.respName} 
-                          onChange={ e => 
-                          this.handleChange(e)} 
+                          value={respName}
+                          onChange={(e) => this.handleChange(e)}
                           required
                         />
                       </div>
@@ -101,8 +136,8 @@ class CreateCompanyDetails extends Component {
                           name="email"
                           type="text"
                           placeholder="Type email here"
-                          value={responsible.email} 
-                          onChange={ e => this.handleChange(e)} 
+                          value={email}
+                          onChange={(e) => this.handleChange(e)}
                           required
                         />
                       </div>

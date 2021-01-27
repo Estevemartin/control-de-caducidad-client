@@ -1,5 +1,5 @@
 import './App.css';
-import {Switch, Redirect, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import AuthProvider from './lib/AuthProvider'
 import AnonRoute from "../src/Components/componentRoutes/AnonRoute";
 import PrivateRoute from "../src/Components/componentRoutes/PrivateRoute";
@@ -10,7 +10,6 @@ import Register from './pages/auth/Register';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
 import CheckInbox from './pages/auth/CheckInbox'; 
-import LandingNoCompanies from './pages/LandingNoCompanies';
 import LandingCompanies from './pages/LandingCompanies';
 import AddCompany from './pages/AddCompany';
 import CreateCompanyDetails from './pages/CreateCompanyDetails'; 
@@ -27,7 +26,6 @@ function App() {
     <div className="App">
       <main className="main" id="top">
         <Switch>
-          {/* <Redirect from exact path="/" to="/login"/> */}
           <AnonRoute exact path="/" component={Login}/>
           <Route exact path="/logout" component={Logout}/>
           <AnonRoute exact path="/register" component={Register}/>
@@ -36,15 +34,15 @@ function App() {
           <AnonRoute exact path="/inbox-pass" component={CheckInbox}/>
           <AnonRoute exact path="/inbox-activate" component={CheckInbox}/>
           <AnonRoute exact path="/spinner" component={Spinner}/>
-          <PrivateRoute exact path="/landing" component={LandingNoCompanies}/>
+          <PrivateRoute exact path="/landing" component={LandingCompanies}/>
           <PrivateRoute exact path="/add-company" component={AddCompany}/>
           <PrivateRoute exact path="/create-company-details" component={CreateCompanyDetails}/>
-          <PrivateRoute exact path="/edit-company" component={EditCompanyDetails}/>
+          <PrivateRoute exact path="/edit-company/:id" component={EditCompanyDetails}/>
           <PrivateRoute exact path="/profile-settings" component={ProfileSettings}/>
           <PrivateRoute exact path="/user-menu-companies" component={LandingCompanies}/>
-          <PrivateRoute exact path="/company-details" component={CompanyDetails}/>
-          <PrivateRoute exact path="/item-details" component={ItemDetails}/>
-          <PrivateRoute exact path="/employee-details" component={EmployeeDetails}/>
+          <PrivateRoute exact path="/company-details/:id" component={CompanyDetails}/>
+          <PrivateRoute exact path="/item-details/:id" component={ItemDetails}/>
+          <PrivateRoute exact path="/employee-details/:id" component={EmployeeDetails}/>
         </Switch>
       </main>
     </div>

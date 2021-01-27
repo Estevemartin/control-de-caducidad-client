@@ -6,13 +6,13 @@ class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      firstName: "",
       surname: "",
       email: "",
       password: "",
       repeatPassword: "",
       isError: {
-        name: "",
+        firstName: "",
         surname: "",
         email: "",
         password: "",
@@ -28,8 +28,8 @@ class Register extends Component {
     let isError = { ...this.state.isError };
 
     switch (name) {
-      case "name":
-        isError.name = value.length < 1 ? "Write a valid name" : "";
+      case "firstName":
+        isError.firstName = value.length < 1 ? "Write a valid name" : "";
         break;
       case "surname":
         isError.surname = value.length < 1 ? "Write a valid surname" : "";
@@ -50,17 +50,16 @@ class Register extends Component {
       default:
         break;
     }
-
-    this.setState({
+    this.setState({ 
       isError,
-      [name]: value,
+      [name]: value 
     });
   };
 
   checkForErrors = async () => {
-    const { name, surname, password, email, isError } = this.state;
-    if (isError.name === "" && isError.password === "" && isError.repeatPassword === "" && isError.email === "") {
-      await this.props.signup({ name, surname, password, email });
+    const { firstName, surname, password, email, isError } = this.state;
+    if (isError.firstName === "" && isError.password === "" && isError.repeatPassword === "" && isError.email === "") {
+      await this.props.signup({ firstName, surname, password, email });
     } else {
       this.setState({
         warning: "Please fill in all the information correctly",
@@ -79,7 +78,7 @@ class Register extends Component {
 
   render() {
     const {
-      name,
+      firstName,
       surname,
       email,
       password,
@@ -116,13 +115,13 @@ class Register extends Component {
                       className="form-control"
                       type="text"
                       placeholder="Name"
-                      name="name"
-                      value={name}
+                      name="firstName"
+                      value={firstName}
                       onChange={(e) => this.handleChange(e)}
                     />
-                    {this.state.isError.name.length > 0 && (
+                    {this.state.isError.firstName.length > 0 && (
                       <span className="error-input">
-                        {this.state.isError.name}
+                        {this.state.isError.firstName}
                       </span>
                     )}
                   </div>

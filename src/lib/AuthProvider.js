@@ -1,6 +1,8 @@
+import Spinner from '../Components/Spinner.jsx';
 import React, { Component } from "react";
 import auth from "./auth-service"; 
 const { Consumer, Provider } = React.createContext();
+
 
 const withAuth = (WrappedComponent) => {
   return class extends Component {
@@ -50,9 +52,9 @@ class AuthProvider extends Component {
   }
 
   signup = (user) => {
-    const { name, surname, password, email} = user;
+    const { firstName, surname, password, email} = user;
       auth
-      .signup({ name, surname, password, email })
+      .signup({ firstName, surname, password, email })
       .then((user) => this.setState({ isLoggedin: true, user }))
       .catch(({ error }) =>
       this.setState({ message: error.data.statusMessage })
@@ -89,7 +91,7 @@ class AuthProvider extends Component {
     } = this;
 
     return isLoading ? (
-      <div>Loading</div>
+      <div><Spinner/></div>
     ) : (
       <Provider
         value={{
