@@ -21,6 +21,14 @@ editUser = async({firstName, surname, email, password }) => {
     }
   }
 
+  /* ADD EXISTING COMPANY */
+
+  addCompany(invitationCode) {
+    return this.user
+    .post(`/add-company/${invitationCode}}`, {invitationCode})
+    .then(({ data }) => data)
+  }
+
 }
 
 const axiosRequestFunctions = new User();

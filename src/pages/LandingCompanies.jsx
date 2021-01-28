@@ -26,7 +26,6 @@ class LandingCompanies extends Component {
 /* TODO: hacer mapeo a las companies y traer datos */
   render() {
     const { companies } = this.state;
-    console.log(companies, 'el user')
     return (
       <>
       { companies.length === 0 ? <LandingNoCompanies /> :

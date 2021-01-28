@@ -13,7 +13,6 @@ class Company {
   createCompany = async({ companyName, responsible, respName, email, invitationCode}) =>{
     try {
       const newCompany = this.company.post(`/add-company`,{ companyName, responsible, respName, email, invitationCode })
-      console.log(newCompany, 'la data')
       return newCompany.data
     } catch (error) {
       console.log(error)
@@ -22,7 +21,7 @@ class Company {
 
   getCompany = async({ companyName, responsible, respName, email, invitationCode}) =>{
     try {
-      const theCompany = await this.company.post(`/get-company`,{ companyName, responsible, respName, email, invitationCode} )
+      const theCompany = this.company.post(`/get-company`,{ companyName, responsible, respName, email, invitationCode} )
       return theCompany.data
     } catch (error) {
       console.log(error)
