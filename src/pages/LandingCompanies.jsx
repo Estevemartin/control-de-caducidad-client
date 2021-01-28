@@ -10,22 +10,32 @@ class LandingCompanies extends Component {
     super(props); 
     this.state = { 
       user: "",
-      companies: "",
+      companies: [],
+      companyName: "",
+      employees: "",
     }
     
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
+    const companiesArr = await this.props.user.companies
+    console.log()
       this.setState({
         user: this.props.user,
-        companies: this.props.user.companies,
+        companies: companiesArr,
       })
+  }
+
+  companyDetails = async (id) => {
+    const details = await companyservice.getCompany(id)
+    return details
   }
 
 
 /* TODO: hacer mapeo a las companies y traer datos */
   render() {
     const { companies } = this.state;
+    console.log(this.state.companyName)
     return (
       <>
       { companies.length === 0 ? <LandingNoCompanies /> :
@@ -37,7 +47,9 @@ class LandingCompanies extends Component {
             <div className="card-header bg-light">
               <h5 className="mb-0">Companies</h5>
             </div>
-            <div className="card-body fs--1 pb-0">
+            { companies ? companies.map((company, index) => {
+                    return (
+            <div className="card-body fs--1 pb-0" key={index}>
               <div className="row">
                 <div className="col-sm-6 col-md-4 mb-3">
                   <div className="d-flex position-relative align-items-center mb-2">
@@ -50,7 +62,7 @@ class LandingCompanies extends Component {
                     <div className="flex-1">
                       <h6 className="fs-0 mb-0">
                         <a className="stretched-link" href="#!">
-                          Company 1
+                          {company}
                         </a>
                       </h6>
                       <p className="mb-1">3243 Personas</p>
@@ -59,6 +71,7 @@ class LandingCompanies extends Component {
                 </div>
               </div>
             </div>
+            )}) : <p>Loading...</p>}
           </div>
         </div>
       </div>

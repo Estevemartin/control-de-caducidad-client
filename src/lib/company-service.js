@@ -19,14 +19,25 @@ class Company {
     }
   }
 
-  getCompany = async({ companyName, responsible, respName, email, invitationCode}) =>{
+  /* GET COMPANY DETAILS */
+
+  getCompany = async({ id }) =>{
     try {
-      const theCompany = this.company.post(`/get-company`,{ companyName, responsible, respName, email, invitationCode} )
+      const theCompany = this.company.get(`/get-company/${id}`,{ id } )
       return theCompany.data
     } catch (error) {
       console.log(error)
     }
   }
+
+  getCompanies(id) {
+    return this.auth
+    .get(`/usercompanies/${id}`, {id})
+    .then(({ data }) => data)
+  }
+
+
+
 
 }
 

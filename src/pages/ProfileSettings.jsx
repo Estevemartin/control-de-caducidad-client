@@ -16,6 +16,8 @@ class ProfileSettings extends Component {
       surname: "",
       email: "",
       password: "",
+      newPassword: "",
+      repeatPassword: "",
     },
   };
 
@@ -54,6 +56,7 @@ class ProfileSettings extends Component {
     }
   };
 
+  //TODO: Validaciones y envio de formulario
   render() {
     const { user } = this.state;
     return (
@@ -83,38 +86,49 @@ class ProfileSettings extends Component {
                         <input
                           className="form-control"
                           type="text"
-                          placeholder={user.name}
+                          placeholder="Name"
+                          value={user.firstName}
                         />
                       </div>
                       <div className="mb-3">
                         <input
                           className="form-control"
                           type="text"
-                          placeholder={user.surname}
+                          placeholder="Surname"
+                          value={user.surname}
                         />
                       </div>
                       <div className="mb-3">
                         <input
                           className="form-control"
                           type="email"
-                          placeholder={user.email}
+                          placeholder="Email"
+                          value={user.email}
                         />
                       </div>
-                      <div className="row gx-3">
-                        <div className="mb-3 col-sm-6">
-                          <input
+                      <div className="mb-3">
+                        <input
+                          className="form-control"
+                            type="password"
+                            placeholder="Current password"
+                            value={user.password}
+                        />
+                      </div>
+                      <div className="mb-3">
+                      <input
                             className="form-control"
                             type="password"
-                            placeholder="Password"
+                            placeholder="New Password"
+                            value={user.newPassword}
                           />
-                        </div>
-                        <div className="mb-3 col-sm-6">
-                          <input
+                      </div>
+                      <div className="mb-3">
+                      <input
                             className="form-control"
                             type="password"
-                            placeholder="Confirm Password"
+                            placeholder="Repeat new Password"
+                            value={user.repeatPassword}
                           />
-                        </div>
                       </div>
                       <div className="mb-3">
                         <button
@@ -122,7 +136,7 @@ class ProfileSettings extends Component {
                           type="submit"
                           name="submit"
                         >
-                          Edit
+                          Save
                         </button>
                       </div>
                     </form>
