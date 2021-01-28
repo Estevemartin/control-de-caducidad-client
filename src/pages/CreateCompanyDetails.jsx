@@ -41,7 +41,6 @@ class CreateCompanyDetails extends Component {
     componentDidMount = async () => {
       const code = await this.generateProductKey()
       this.setState({ invitationCode: code });
-      console.log(code, 'el code')
     };
   
 
@@ -66,7 +65,7 @@ class CreateCompanyDetails extends Component {
   
 
   render() {
-    const { companyName, responsible, respName, email } = this.state;
+    const { companyName, respName, email } = this.state;
     return (
       <div className="container">
         <SideNavbar />
@@ -143,7 +142,7 @@ class CreateCompanyDetails extends Component {
                       </div>
                     </div>
 
-                    <div className="card mb-3">
+                    {/* <div className="card mb-3">
                       <div className="card-header">
                         <h5 className="mb-0">Company Logo</h5>
                       </div>
@@ -184,7 +183,6 @@ class CreateCompanyDetails extends Component {
                               />
                               <div className="flex-1 d-flex flex-between-center">
                                 <div>
-                                  {/* eslint-disable-next-line */}
                                   <h6 data-dz-name="data-dz-name"></h6>
                                   <div className="d-flex align-items-center">
                                     <p
@@ -224,7 +222,7 @@ class CreateCompanyDetails extends Component {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="d-flex justify-content-center w-100">
                       <button
                         className="btn btn-primary btn-xs mt-3 d-flex justify-center"

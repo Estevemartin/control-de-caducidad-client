@@ -20,9 +20,9 @@ class Company {
     }
   }
 
-  getCompany = async({ companyName, responsible, respName, email}) =>{
+  getCompany = async({ companyName, responsible, respName, email, invitationCode}) =>{
     try {
-      const theCompany = await this.company.post(`/get-company`,{ companyName, responsible, respName, email} )
+      const theCompany = await this.company.post(`/get-company`,{ companyName, responsible, respName, email, invitationCode} )
       return theCompany.data
     } catch (error) {
       console.log(error)

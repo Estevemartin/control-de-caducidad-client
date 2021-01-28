@@ -9,6 +9,8 @@ class LandingCompanies extends Component {
   constructor(props){
     super(props); 
     this.state = { 
+      user: "",
+      companies: "",
       companyName: "",
         responsible: {
           respName: "", 
@@ -17,25 +19,27 @@ class LandingCompanies extends Component {
     }
   }
 
-  componentDidMount = async () => {
-    const user = this.props.user;
-    const theCompany = await companyservice.getCompany(user.companies.id)
-    this.setState({
-      companyName: theCompany.companyName,
-        responsible: {
-          respName: theCompany.responsible.respName, 
-          email: theCompany.responsible.email,
-        }
-    })
+  componentDidMount = () => {
+    /* const theCompany = await companyservice.getCompany(user.companies._id) */
+      this.setState({
+        user: this.props.user,
+        companies: this.props.user.companies,
+        /* companyName: theCompany.companyName,
+          responsible: {
+            respName: theCompany.responsible.respName, 
+            email: theCompany.responsible.email, 
+          }*/
+      })
   }
 
 
 
   render() {
-    const { companyName } = this.state;
+    const { companies } = this.state;
+    console.log(companies, 'el user')
     return (
       <>
-      { !companyName ? <LandingNoCompanies /> :
+      { companies.length === 0 ? <LandingNoCompanies /> :
       <div className="container">
         <SideNavbar />
         <div className="content">
