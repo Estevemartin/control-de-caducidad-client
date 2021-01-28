@@ -4,7 +4,7 @@ import { withAuth } from "../../lib/AuthProvider";
 
 function SideNavbar(props) {
 
-  const { isLoggedin } = props;
+  const { isLoggedin, user } = props;
   return (
     <>
     {isLoggedin ? (
@@ -58,6 +58,8 @@ function SideNavbar(props) {
                   id="authentication"
                   data-parent="#navbarVerticalCollapse"
                 >
+
+                {/* TODO: hacer mapeo de empresas */}
                   <li className="nav-item">
                     <a
                       className="nav-link dropdown-indicator"
@@ -75,83 +77,17 @@ function SideNavbar(props) {
                       data-parent="#authentication"
                     >
                       <li className="nav-item">
-                        <Link className="nav-link" href="/employees">
+                        <Link className="nav-link" to="/employees">
                           Employees
                         </Link>
                       </li>
                       <li className="nav-item">
-                        <Link className="nav-link" href="/item/:id">
+                        <Link className="nav-link" to="/item/:id">
                           Item 1
                         </Link>
                       </li>
                       <li className="nav-item">
-                        <Link className="nav-link" href="/item/:id">
-                          Item 2
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link dropdown-indicator"
-                      href="#authentication-card"
-                      data-toggle="collapse"
-                      role="button"
-                      aria-expanded="false"
-                      aria-controls="authentication-card"
-                    >
-                      Company 2
-                    </a>
-                    <ul
-                      className="nav collapse"
-                      id="authentication-card"
-                      data-parent="#authentication"
-                    >
-                      <li className="nav-item">
-                        <Link className="nav-link" href="/employees">
-                          Employees
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="nav-link" href="/item/:id">
-                          Item 1
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="nav-link" href="/item/:id">
-                          Item 2
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link dropdown-indicator"
-                      href="#authentication-split"
-                      data-toggle="collapse"
-                      role="button"
-                      aria-expanded="false"
-                      aria-controls="authentication-split"
-                    >
-                      Company 3
-                    </a>
-                    <ul
-                      className="nav collapse"
-                      id="authentication-split"
-                      data-parent="#authentication"
-                    >
-                      <li className="nav-item">
-                        <Link className="nav-link" href="/employees">
-                          Employees
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="nav-link" href="/item/:id">
-                          Item 1
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="nav-link" href="/item/:id">
+                        <Link className="nav-link" to="/item/:id">
                           Item 2
                         </Link>
                       </li>

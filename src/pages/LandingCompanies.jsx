@@ -11,29 +11,19 @@ class LandingCompanies extends Component {
     this.state = { 
       user: "",
       companies: "",
-      companyName: "",
-        responsible: {
-          respName: "", 
-          email: "",
-        }
     }
+    
   }
 
   componentDidMount = () => {
-    /* const theCompany = await companyservice.getCompany(user.companies._id) */
       this.setState({
         user: this.props.user,
         companies: this.props.user.companies,
-        /* companyName: theCompany.companyName,
-          responsible: {
-            respName: theCompany.responsible.respName, 
-            email: theCompany.responsible.email, 
-          }*/
       })
   }
 
 
-
+/* TODO: hacer mapeo a las companies y traer datos */
   render() {
     const { companies } = this.state;
     console.log(companies, 'el user')
