@@ -22,7 +22,7 @@ export default class ItemAddAndList extends Component {
           </a>
           <div className="collapse" id="experience-form1">
             <form className="row">
-              <div className="col-3 mb-3 text-lg-right">
+              <div className="col-6 col-sm-3 mb-3 text-lg-right">
                 <label className="form-label" for="company">
                   Name
                 </label>
@@ -35,7 +35,7 @@ export default class ItemAddAndList extends Component {
                 />
               </div>
 
-              <div className="col-3 mb-3 text-lg-right">
+              <div className="col-6 col-sm-3 mb-3 text-lg-right">
                 <label className="form-label" for="company">
                   Item responsible name
                 </label>
@@ -48,7 +48,7 @@ export default class ItemAddAndList extends Component {
                 />
               </div>
 
-              <div className="col-3 mb-3 text-lg-right">
+              <div className="col-6 col-sm-3 mb-3 text-lg-right">
                 <label className="form-label" for="company">
                   Item responsible email
                 </label>
@@ -61,7 +61,7 @@ export default class ItemAddAndList extends Component {
                 />
               </div>
 
-              <div className="col-3 mb-3 text-lg-right">
+              <div className="col-6 col-sm-3 mb-3 text-lg-right">
                 <label className="form-label" for="position">
                   Validity period
                 </label>
@@ -87,8 +87,8 @@ export default class ItemAddAndList extends Component {
                   <option value="Years">Years</option>
                 </select>
               </div>
-              <br />
-              <div className="col-3 mb-3 text-lg-right">
+              <div className="d-none d-sm-inline-block">< br /></div>
+              <div className="col-6 col-sm-3 mb-3 text-lg-right">
                 <label className="form-label" for="position">
                   Notice period
                 </label>
@@ -141,15 +141,6 @@ export default class ItemAddAndList extends Component {
                 <a href="#!">424 Personas</a>
               </p>
               <div className="border-dashed-bottom my-3"></div>
-            </div>
-          </div>
-          <div className="d-flex">
-            <div className="flex-1 position-relative pl-3">
-              <h6 className="fs-0 mb-0">Item 3</h6>
-              <p className="mb-1">
-                {" "}
-                <a href="#!">12 Personas</a>
-              </p>
             </div>
           </div>
         </div>
