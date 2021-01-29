@@ -62,7 +62,7 @@ class LandingCompanies extends Component {
                     <div className="flex-1">
                       <h6 className="fs-0 mb-0">
                         <a className="stretched-link" href="#!">
-                          {company}
+                          {company.companyName}
                         </a>
                       </h6>
                       <p className="mb-1">3243 Personas</p>

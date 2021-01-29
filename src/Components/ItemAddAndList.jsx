@@ -22,12 +22,12 @@ export default class ItemAddAndList extends Component {
           </a>
           <div className="collapse" id="experience-form1">
             <form className="row">
-              <div className="col-6 col-sm-3 mb-3 text-lg-right">
+              <div className="col-12 mb-3">
                 <label className="form-label" for="company">
                   Name
                 </label>
               </div>
-              <div className="col-6 col-sm-7 mb-3">
+              <div className="col-12 mb-3">
                 <input
                   className="form-control form-control-sm"
                   id="company"
@@ -35,12 +35,12 @@ export default class ItemAddAndList extends Component {
                 />
               </div>
 
-              <div className="col-6 col-sm-3 mb-3 text-lg-right">
+              <div className="col-12 mb-3 ">
                 <label className="form-label" for="company">
                   Item responsible name
                 </label>
               </div>
-              <div className="col-6 col-sm-7 mb-3">
+              <div className="col-12 mb-3">
                 <input
                   className="form-control form-control-sm"
                   id="company"
@@ -48,12 +48,12 @@ export default class ItemAddAndList extends Component {
                 />
               </div>
 
-              <div className="col-6 col-sm-3 mb-3 text-lg-right">
+              <div className="col-12 mb-3">
                 <label className="form-label" for="company">
                   Item responsible email
                 </label>
               </div>
-              <div className="col-6 col-sm-7 mb-3">
+              <div className="col-12 mb-3">
                 <input
                   className="form-control form-control-sm"
                   id="company"
@@ -61,12 +61,12 @@ export default class ItemAddAndList extends Component {
                 />
               </div>
 
-              <div className="col-6 col-sm-3 mb-3 text-lg-right">
+              <div className="col-12 mb-3 ">
                 <label className="form-label" for="position">
                   Validity period
                 </label>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <select
                   className="form-select"
                   aria-label="Default select example"
@@ -76,7 +76,7 @@ export default class ItemAddAndList extends Component {
                   <option value="3">3</option>
                 </select>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <select
                   className="form-select"
                   aria-label="Default select example"
@@ -88,12 +88,12 @@ export default class ItemAddAndList extends Component {
                 </select>
               </div>
               <div className="d-none d-sm-inline-block">< br /></div>
-              <div className="col-6 col-sm-3 mb-3 text-lg-right">
+              <div className="col-12 mb-3">
                 <label className="form-label" for="position">
                   Notice period
                 </label>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <select
                   className="form-select"
                   aria-label="Default select example"
@@ -103,7 +103,7 @@ export default class ItemAddAndList extends Component {
                   <option value="3">3</option>
                 </select>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <select
                   className="form-select"
                   aria-label="Default select example"
@@ -115,7 +115,7 @@ export default class ItemAddAndList extends Component {
                 </select>
               </div>
 
-              <div className="col-9 col-sm-7 offset-3">
+              <div className="col-9 col-sm-7 ml-0 mt-3 offset-5">
                 <button className="btn btn-primary" type="button">
                   Save
                 </button>

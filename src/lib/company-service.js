@@ -31,7 +31,7 @@ class Company {
   }
 
   getCompanies(id) {
-    return this.auth
+    return this.company
     .get(`/usercompanies/${id}`, {id})
     .then(({ data }) => data)
   }
