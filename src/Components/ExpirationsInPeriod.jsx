@@ -8,14 +8,15 @@ export default class ExpirationsInPeriod extends Component {
             <div className="card h-100 bg-line-chart-gradient">
               <div className="card-header bg-transparent">
                 <h5 className="text-white">Upcomming Expirations In Period</h5>
-                <div className="upcoming-expirations-button-align">
+                <div className="upcoming-expirations-button-align d-flex flex-column align-items-start">
                 <div
-                  className="real-time-user display-1 font-weight-normal text-white"
+                  className="col real-time-user display-1 font-weight-normal text-white"
                   data-countup='{"endValue":119}'
                 >
                   0
                 </div>
-                <div className="col-auto w-50 d-flex container">
+                < br/>
+                <div className="row w-75 d-flex container mt-3">
                   <select className="form-select form-select-sm select-month mr-2">
                   <option selected>Choose One</option>
                     <option value="0">1 Week</option>
@@ -30,7 +31,7 @@ export default class ExpirationsInPeriod extends Component {
               </div>
 
               <div className="card-body text-white fs--1">
-                <div className="list-group-flush mt-4">
+                <div className="list-group-flush mt-2">
                   <div className="list-group-item bg-transparent d-flex justify-content-between px-0 py-1 font-weight-semi-bold border-top-0 upcoming-expirations-border">
                     <p className="mb-0">Items</p>
                     <p className="mb-0">Expirations</p>
