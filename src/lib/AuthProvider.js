@@ -9,12 +9,17 @@ const withAuth = (WrappedComponent) => {
     render() {
       return (
         <Consumer>
-          {({
-            login,
-            signup,
-            user,
-            logout,
-            isLoggedin,
+          {({login,
+          signup,
+          user,
+          logout,
+          isLoggedin,
+          sendAccountActivationEmail,
+          activateAccount,
+          sendResetPasswordEmail,
+          saveNewPassword,
+          saveNewPasswordFromSettings,
+          getUserInfo
           }) => {
             return (
               <WrappedComponent
@@ -23,6 +28,12 @@ const withAuth = (WrappedComponent) => {
                 user={user}
                 logout={logout}
                 isLoggedin={isLoggedin}
+                sendAccountActivationEmail={sendAccountActivationEmail}
+                activateAccount={activateAccount}
+                sendResetPasswordEmail={sendResetPasswordEmail}
+                saveNewPassword={saveNewPassword}
+                saveNewPasswordFromSettings={saveNewPasswordFromSettings}
+                getUserInfo={getUserInfo}
                 {...this.props}
               />
             );
@@ -38,6 +49,8 @@ class AuthProvider extends Component {
     isLoggedin: false,
     user: null,
     isLoading: true,
+    errorMsg:null,
+    emailToActivate:null
   };
 
   componentDidMount() {
@@ -50,28 +63,32 @@ class AuthProvider extends Component {
         this.setState({ isLoggedin: false, user: null, isLoading: false })
       );
   }
-
-  signup = (user) => {
-    const { firstName, surname, password, email} = user;
-      auth
-      .signup({ firstName, surname, password, email })
-      .then((user) => this.setState({ isLoggedin: true, user }))
-      .catch(({ error }) =>
-      this.setState({ message: error.data.statusMessage })
-      );
-  };
-
+  signup = async (user) => {
+    const {firstName, surname, password, email} = user;
+    try {
+      const user = await auth.signup({ firstName, surname, password, email })
+      if (!user.errorMsg){
+        return true
+      }else{
+        return user.errorMsg
+      }
+    } catch(error){
+      console.log(error)
+    }
+  }
   login = async (user) => {
     const { email, password } = user;
     try {
-      const user = await auth.login({ email, password });
-      this.setState({ isLoggedin: true, user });
-      
+      const user = await auth.login({ email, password })
+      if (!user.errorMsg){
+        this.setState({ isLoggedin: true, user});
+      } else {
+        return user.errorMsg
+      }
     } catch (error) {
       console.log(error);
     }
-  };
-
+  }
   logout = async () => {
     try {
       await auth.logout();
@@ -79,8 +96,72 @@ class AuthProvider extends Component {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
+  sendAccountActivationEmail = async (email) =>{
+    try{
+      const emailSent = await auth.sendAccountActivationEmail(email)
+      if (emailSent.errorMsg){
+        return emailSent.errorMsg
+      } else {
+        return emailSent
+      }
+    }catch(err){
+      console.log(err)
+    }
+  }
+  activateAccount = async (token) =>{
+    try{
+      await auth.activateAccount(token)
+    }catch(err){
+      console.log(err)
+    }
+  }
+  sendResetPasswordEmail = async (email) =>{
+    try{
+      const emailSent = await auth.sendResetPasswordEmail(email)
+      if (emailSent.errorMsg!==undefined){
+        return emailSent.errorMsg
+      }
+    }catch(err){
+      console.log(err)
+    }
 
+  }
+  saveNewPassword = async (id,password) =>{
+    try{
+      const userUpdated = await auth.saveNewPassword(id,password)
+      if (userUpdated.errorMsg){
+        return userUpdated.errorMsg
+      } else {
+        return userUpdated
+      }
+    }catch(err){
+      console.log(err)
+    }
+
+  }
+  saveNewPasswordFromSettings = async (id,name, surname, email,password,newPassword) =>{
+    try{
+      const userUpdated = await auth.saveNewPasswordFromSettings(id,name, surname, email,password,newPassword)
+      // if (userUpdated.errorMsg){
+      //   return userUpdated.errorMsg
+      // } else {
+        return userUpdated
+      // }
+    }catch(err){
+      console.log(err)
+    }
+
+  }
+  getUserInfo = async id =>{
+    try{
+      const user = await auth.getUserInfo(id)
+      this.setState({user:user})
+      return user
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   render() {
     const { isLoading, isLoggedin, user } = this.state;
@@ -88,20 +169,30 @@ class AuthProvider extends Component {
       login,
       logout,
       signup,
+      sendAccountActivationEmail,
+      activateAccount,
+      sendResetPasswordEmail,
+      saveNewPassword,
+      saveNewPasswordFromSettings,
+      getUserInfo
     } = this;
 
     return isLoading ? (
       <div><Spinner/></div>
     ) : (
-      <Provider
-        value={{
-          isLoggedin,
-          user,
-          login,
-          logout,
-          signup,
-        }}
-      >
+      <Provider value={{
+        isLoggedin,
+        user,
+        login,
+        logout,
+        signup,
+        sendAccountActivationEmail,
+        activateAccount,
+        sendResetPasswordEmail,
+        saveNewPassword,
+        saveNewPasswordFromSettings,
+        getUserInfo
+        }}>
         {this.props.children}
       </Provider>
     );

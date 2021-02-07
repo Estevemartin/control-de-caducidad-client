@@ -4,7 +4,7 @@ import { withAuth } from "../../lib/AuthProvider";
 
 function SideNavbar(props) {
 
-  const { isLoggedin, user } = props;
+  const { isLoggedin} = props;
   return (
     <>
     {isLoggedin ? (

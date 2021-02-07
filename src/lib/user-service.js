@@ -10,17 +10,6 @@ class User {
 
 
 
-  /* USER DETAILS */
-
-editUser = async({firstName, surname, email, password }) => {
-    try {
-        const modifiedUser = await this.user.put(`/profile/edit`, {firstName, surname, email, password})
-        return modifiedUser.data
-    } catch (error) {
-        console.log(error)
-    }
-  }
-
   /* ADD EXISTING COMPANY */
 
   addCompany(invitationCode) {
