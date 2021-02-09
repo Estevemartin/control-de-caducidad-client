@@ -117,6 +117,8 @@ class ProfileSettings extends Component {
                       {this.displayErrorMsg()}
                       {this.displaySuccessMsg()}
                     </form>
+                    <Link to ="/"><div className="mb-3"> <button className="btn btn-primary btn-block mt-3"> Go Back </button> </div></Link>
+                    
                   </div>
                 </div>
               </div>

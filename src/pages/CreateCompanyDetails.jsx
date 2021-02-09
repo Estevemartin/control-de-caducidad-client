@@ -9,7 +9,6 @@ class CreateCompanyDetails extends Component {
     super(props);
     this.state = {
       companyName: "",
-      responsible: "",
       respName: "",
       email: "",
       invitationCode: "",
@@ -46,14 +45,8 @@ class CreateCompanyDetails extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const { companyName, responsible, respName, email, invitationCode } = this.state;
-    companyservice.createCompany({
-      companyName,
-      responsible,
-      respName,
-      email,
-      invitationCode,
-    });
+    const { companyName, respName, email, invitationCode } = this.state;
+    companyservice.createCompany({companyName, respName, email, invitationCode});
     this.props.history.push(`/landing`);
   };
 
@@ -61,8 +54,6 @@ class CreateCompanyDetails extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
-
-  
 
   render() {
     const { companyName, respName, email } = this.state;
@@ -81,156 +72,28 @@ class CreateCompanyDetails extends Component {
                   <form onSubmit={this.handleFormSubmit}>
                     <div className="row gx-2">
                       <div className="col-12 mb-3">
-                        <label className="form-label" for="event-name">
-                          Company Name
-                        </label>
-                        <input
-                          className="form-control"
-                          id="name"
-                          name="companyName"
-                          type="text"
-                          placeholder="Type your company name here"
-                          value={companyName}
-                          onChange={(e) => this.handleChange(e)}
-                          required
-                        />
+                        <label className="form-label" for="event-name">Company Name</label>
+                        <input className="form-control" id="name" name="companyName" type="text" placeholder="Type your company name here" value={companyName} onChange={(e) => this.handleChange(e)} required/>
                       </div>
                       <div className=" col-12 mb-3">
-                        <h6 className="form-label" for="modal-auth-email">
-                          Company Responsible
-                        </h6>
+                        <h6 className="form-label" for="modal-auth-email">Company Responsible</h6>
+                      </div>
+                      <div className="col-sm-6 mb-3 mt-1">
+                        <label className="form-label" for="event-address">Responsible Name</label>
+                        <input lassName="form-control mt-2" id="respName" name="respName" type="text" placeholder="Type name here" value={respName} onChange={(e) => this.handleChange(e)} required/>
                       </div>
                       <div className="col-sm-6 mb-3 mt-1">
                         <label className="form-label" for="event-address">
-                          Responsible Name
-                        </label>
-                        <input
-                          className="form-control mt-2"
-                          id="respName"
-                          name="respName"
-                          type="text"
-                          placeholder="Type name here"
-                          value={respName}
-                          onChange={(e) => this.handleChange(e)}
-                          required
-                        />
-                      </div>
-                      <div className="col-sm-6 mb-3">
-                        <label className="form-label" for="event-address">
                           Responsible Email
-                          <button
-                            class="btn btn-sm m-1"
-                            type="button"
-                            data-toggle="tooltip"
-                            data-placement="right"
-                            title="This person will appear as 'CC' in every email sent in this company."
-                          >
+                          <button class="btn btn-sm m-1" type="button" data-toggle="tooltip" data-placement="right" title="This person will appear as 'CC' in every email sent in this company." >
                             <i class="fas fa-question-circle"></i>
                           </button>
                         </label>
-
-                        <input
-                          className="form-control"
-                          id="email"
-                          name="email"
-                          type="text"
-                          placeholder="Type email here"
-                          value={email}
-                          onChange={(e) => this.handleChange(e)}
-                          required
-                        />
+                        <input className="form-control mt-2" id="email" name="email" type="text" placeholder="Type email here" value={email} onChange={(e) => this.handleChange(e)} required/>
                       </div>
                     </div>
-
-                    {/* <div className="card mb-3">
-                      <div className="card-header">
-                        <h5 className="mb-0">Company Logo</h5>
-                      </div>
-                      <div className="card-body bg-light">
-                        <div
-                          className="dropzone dropzone-multiple p-0"
-                          id="my-awesome-dropzone"
-                          data-dropzone="data-dropzone"
-                          action="../assets/img/"
-                        >
-                          <div className="fallback">
-                            <input
-                              name="file"
-                              type="file"
-                              multiple="multiple"
-                            />
-                          </div>
-                          <div
-                            className="dz-message"
-                            data-dz-message="data-dz-message"
-                          >
-                            {" "}
-                            <img
-                              className="mr-2"
-                              src="../assets/img/icons/cloud-upload.svg"
-                              width="25"
-                              alt=""
-                            />
-                            Drop your logo here
-                          </div>
-                          <div className="dz-preview dz-preview-multiple m-0 d-flex flex-column">
-                            <div className="d-flex media align-items-center mb-3 pb-3 border-bottom btn-reveal-trigger">
-                              <img
-                                className="dz-image"
-                                src="..."
-                                alt="..."
-                                data-dz-thumbnail="data-dz-thumbnail"
-                              />
-                              <div className="flex-1 d-flex flex-between-center">
-                                <div>
-                                  <h6 data-dz-name="data-dz-name"></h6>
-                                  <div className="d-flex align-items-center">
-                                    <p
-                                      className="mb-0 fs--1 text-400 lh-1"
-                                      data-dz-size="data-dz-size"
-                                    ></p>
-                                    <div className="dz-progress">
-                                      <span
-                                        className="dz-upload"
-                                        data-dz-uploadprogress=""
-                                      ></span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="dropdown font-sans-serif">
-                                  <button
-                                    className="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal dropdown-caret-none"
-                                    type="button"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                  >
-                                    <span className="fas fa-ellipsis-h"></span>
-                                  </button>
-                                  <div className="dropdown-menu dropdown-menu-right border py-2">
-                                    <a
-                                      className="dropdown-item"
-                                      href="#!"
-                                      data-dz-remove="data-dz-remove"
-                                    >
-                                      Remove File
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> */}
                     <div className="d-flex justify-content-center w-100">
-                      <button
-                        className="btn btn-primary btn-xs mt-3 d-flex justify-center"
-                        type="submit"
-                        name="submit"
-                      >
-                        Create company
-                      </button>
+                      <button className="btn btn-primary btn-xs mt-3 d-flex justify-center" type="submit" name="submit">Create company</button>
                     </div>
                   </form>
                 </div>
