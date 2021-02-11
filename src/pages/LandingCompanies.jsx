@@ -14,14 +14,14 @@ class LandingCompanies extends Component {
   }
 
   componentDidMount = async () => {
-    const theUser = await this.props.getUserInfo(this.props.user._id);  
+    const theUser = await this.props.getUserInfo(this.props.user._id) 
     // console.log(theUser)  
     // const companiesArr = await this.props.user.companies;
     this.setState({
       user: theUser,
       // companies: theUser.companies,
-    });
-  };
+    })
+  }
 
   companyDetails = async (id) => {
     const details = await companyservice.getCompany(id);
@@ -35,8 +35,7 @@ class LandingCompanies extends Component {
 
       let i
       for(i=0;i<this.state.user.companies.length;i++){
-        return <>
-          <div className="card-body fs--1 pb-0" key={i}>
+        return  <div className="card-body fs--1 pb-0" key={i}>
             <div className="row">
               <div className="col-sm-6 col-md-4 mb-3">
                 <div className="d-flex position-relative align-items-center mb-2">
@@ -53,7 +52,7 @@ class LandingCompanies extends Component {
               </div>
             </div>
           </div>
-        </>
+        
       }
     }
 
