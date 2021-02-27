@@ -43,7 +43,7 @@ function App() {
           <PrivateRoute exact path="/edit-company/:id" component={EditCompanyDetails}/>
           <PrivateRoute exact path="/profile-settings" component={ProfileSettings}/>
           <PrivateRoute exact path="/user-menu-companies" component={LandingCompanies}/>
-          <PrivateRoute exact path="/company-details" component={CompanyDetails}/>
+          <PrivateRoute exact path="/company-details/:id" component={CompanyDetails}/>
           <PrivateRoute exact path="/item-details" component={ItemDetails}/>
           <PrivateRoute exact path="/employee-details/:id" component={EmployeeDetails}/>
         </Switch>

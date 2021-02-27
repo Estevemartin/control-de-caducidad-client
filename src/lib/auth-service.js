@@ -20,9 +20,10 @@ class Auth {
   saveNewPasswordFromSettings(id, name, surname, email,password,newPassword){return this.auth.post("/saveNewPasswordFromSettings",{id,name, surname, email, password,newPassword}).then(({data})=>data)}
   getUserInfo(id){return this.auth.post("/getUserInfo",{id}).then(({data})=>data)}
   me() {return this.auth.get("/me").then((response) => response.data);}
-
-
-  
+  getCompanyDetails(id){return this.auth.post("/getCompanyDetails",{id}).then(({data})=>data)}
+  createNewItem(itemName, itemResponsibleName, itemResponsibleEmail, validityPeriodValue, validityPeriodUnits, noticePeriodValue, noticePeriodUnits, companyId){
+    return this.auth.post("/createNewItem",{itemName, itemResponsibleName, itemResponsibleEmail, validityPeriodValue, validityPeriodUnits, noticePeriodValue, noticePeriodUnits, companyId}).then(({data})=>data)}
+  getItemDetails(itemsList){return this.auth.post("/getItemDetails",{itemsList}).then(({data})=>data)}
 
 }
 

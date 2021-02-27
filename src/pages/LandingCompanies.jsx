@@ -35,6 +35,8 @@ class LandingCompanies extends Component {
 
       let i
       for(i=0;i<this.state.user.companies.length;i++){
+        let pageLink="/company-details/"+this.state.user.companies[i]._id
+        console.log(pageLink)
         return  <div className="card-body fs--1 pb-0" key={i}>
             <div className="row">
               <div className="col-sm-6 col-md-4 mb-3">
@@ -42,9 +44,9 @@ class LandingCompanies extends Component {
                   <img className="d-flex align-self-center mr-2" src="" alt="logo" width="50"/>
                   <div className="flex-1">
                     <h6 className="fs-0 mb-0">
-                      <a className="stretched-link" href="#!">
+                      <Link className="stretched-link" to={"/company-details/"+this.state.user.companies[i].id}>
                         {this.state.user.companies[i].companyName}
-                      </a>
+                      </Link>
                     </h6>
                     <p className="mb-1">{this.state.user.companies[i].workers.length} Personas</p>
                   </div>
@@ -70,7 +72,8 @@ class LandingCompanies extends Component {
                 <div className="d-flex position-relative align-items-center mb-2">
                   {/* <img className="d-flex align-self-center mr-2" src="" alt="logo" width="50"/> */}
                   <div className="flex-1" >
-                    <h6 className="fs-0 mb-0"><a className="stretched-link" href="#!" >{element.companyName}</a></h6>
+                    
+                    <h6 className="fs-0 mb-0"><Link className="stretched-link" to={"/company-details/"+element._id}>{element.companyName}</Link></h6>
                     <p className="mb-1">{element.workers.length} Personas</p>
                   </div>
                 </div>

@@ -14,93 +14,72 @@ import { Link } from "react-router-dom";
 
 class CompanyDetails extends Component {
   state = {
-    companyName: "",
-  };
+    company: "",
+    controlledItemsValue:null,
+    controlledItemsPercentage:"",
+    expiredItemsValue:null,
+    expiredItemsPercentage:"",
+    itemsList:[],
+  }
 
-  componentDidMount = () => {
-    this.GetCompanyName();
-    this.Button();
-  };
+  componentDidMount = async() => {
+    await this.getCompanyDetails()
+    this.Button()
+  }
 
-  GetCompanyName = () => {
-    const findCompany = "Company name";
-    this.setState({ companyName: findCompany });
-  };
+  getCompanyDetails = async () => {
+    const companyId = this.props.location.pathname.split("/")[2]
+    const companyDetails = await this.props.getCompanyDetails(companyId)
+    //EXPIRED AND CONTROLLED ITEMS
+    const items = companyDetails.items
+    if (items.length===0){
+      this.setState({controlledItemsValue:0,controlledItemsPercentage:"",expiredItemsValue:0,expiredItemsPercentage:""})
+    } else {
+      // var stateItemList = []
+      // stateItemList = items.map(element=>{
+      //   return({itemName:element.itemName,numWorkers:element.workers.length})
+      // })
+      // this.setState({controlledItemsValue:200,controlledItemsPercentage:"80%",expiredItemsValue:340,expiredItemsPercentage:"90%"})
+      // count controlled items from "items" object, calculate percentage and set state.
+    }
+
+    //COMPANY NAME
+    // console.log(companyDetails)
+    this.setState({ company: companyDetails })
+  }
 
   Button = () => {
-    return (
-      <>
-      <Link to="/edit-company">
-        <button className="btn btn-falcon-primary btn-sm">
-          Edit Company Details
-        </button>
-      </Link>
-      </>
-    );
-  };
+    const companyId = this.props.location.pathname.split("/")[2]
+    return (<Link to={"/edit-company/"+companyId}><button className="btn btn-falcon-primary btn-sm">Edit Company Details</button></Link>)
+  }
+
+
 
   render() {
-    const { companyName } = this.state;
+    const { company, controlledItemsValue, controlledItemsPercentage, expiredItemsValue, expiredItemsPercentage } = this.state;
     return (
-      <div className="container">
-        <SideNavbar />
-        <div className="content">
-          <TopNavbar />
-          <div>
-            {/* TOP COMPANY NAVBAR */}
-            <CompanyNavbar theName={companyName} button={this.Button()} />
-            {/* CONTENT */}
+      <div className="container"><SideNavbar/>
+        <div className="content"><TopNavbar/>
+          <div><CompanyNavbar theName={company.companyName} button={this.Button()} />
             <div className="row-cols-md-3 d-md-flex justify-content-between">
               <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
-                {/* CONTROLLED ITEMS CARD */}
-                <div className="col-md-12 item-details-top-half-item col">
-                  <ControlledItemsCard />
-                </div>
-                {/* EXPIRED ITEMS CARD */}
-                <div className="col-md-12 item-details-top-half-item mb-3">
-                  <ExpiredItemsCard />
-                </div>
+                <div className="col-md-12 item-details-top-half-item col"><ControlledItemsCard value={controlledItemsValue} percentage={controlledItemsPercentage}/></div>
+                <div className="col-md-12 item-details-top-half-item mb-3"><ExpiredItemsCard  value={expiredItemsValue} percentage={expiredItemsPercentage}/></div>
               </div>
-
-              <div className="col-md-8 col-sm-12">
-                {/* MONTHLY EXPIRATIONS CHART */}
-                <MonthlyExpirationsChart />
-              </div>
+              <div className="col-md-8 col-sm-12"><MonthlyExpirationsChart/></div>
             </div>
-
-            {/* DESKTOP VERSION ORDER */}
-
             <div className="row-cols-md-3 d-none d-md-flex justify-content-between">
               <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
-                {/* UPCOMING EXPIRATIONS IN PERIOD CARD */}
-                <div className="col-md-12 col-sm-12 item-details-top-half-item">
-                  <ExpirationsInPeriod />
-                </div>
+                <div className="col-md-12 col-sm-12 item-details-top-half-item"><ExpirationsInPeriod/></div>
               </div>
-
-              <div className="col-md-8 col-sm-12">
-                {/* ITEMS */}
-                <ItemAddAndList />
-              </div>
+              <div className="col-md-8 col-sm-12"><ItemAddAndList company={company}/></div>
             </div>
-
-            {/* UPCOMING EXPIRATIONS BY EMPLOYEE */}
             <UpcomingExpirationsEmployee />
-
-            {/* MOBILE VERSION ORDER */}
-
             <div className="row-cols-md-3 d-md-none justify-content-between">
               <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
-                {/* UPCOMING EXPIRATIONS IN PERIOD CARD */}
-                <div className="col-md-12 col-sm-12 item-details-top-half-item">
-                  <ExpirationsInPeriod />
-                </div>
+                <div className="col-md-12 col-sm-12 item-details-top-half-item"><ExpirationsInPeriod/></div>
               </div>
-
-              <div className="col-md-8 col-sm-12">
-                {/* ITEMS */}
-                <ItemAddAndList />
-              </div>
+              <div className="col-md-8 col-sm-12"><ItemAddAndList company={company}/></div>
             </div>
           </div>
         </div>

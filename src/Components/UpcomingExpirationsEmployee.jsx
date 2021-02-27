@@ -13,12 +13,12 @@ export default class UpcomingExpirationsEmployee extends Component {
                 <div className="col-8 col-sm-auto text-right pl-2">
                   <div className="d-none" id="table-customers-actions">
                     <div className="d-flex">
-                      <select className="form-select form-select-sm" aria-label="Bulk actions">
+                      {/* <select className="form-select form-select-sm" aria-label="Bulk actions">
                         <option selected="">Bulk actions</option>
                         <option value="Refund">Refund</option>
                         <option value="Delete">Delete</option>
                         <option value="Archive">Archive</option>
-                      </select>
+                      </select> */}
                       <button className="btn btn-falcon-default btn-sm ml-2" type="button">Apply</button>
                     </div>
                   </div>

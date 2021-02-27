@@ -19,7 +19,10 @@ const withAuth = (WrappedComponent) => {
           sendResetPasswordEmail,
           saveNewPassword,
           saveNewPasswordFromSettings,
-          getUserInfo
+          getUserInfo,
+          getCompanyDetails,
+          createNewItem,
+          getItemDetails
           }) => {
             return (
               <WrappedComponent
@@ -34,6 +37,9 @@ const withAuth = (WrappedComponent) => {
                 saveNewPassword={saveNewPassword}
                 saveNewPasswordFromSettings={saveNewPasswordFromSettings}
                 getUserInfo={getUserInfo}
+                getCompanyDetails={getCompanyDetails}
+                createNewItem={createNewItem}
+                getItemDetails={getItemDetails}
                 {...this.props}
               />
             );
@@ -162,6 +168,32 @@ class AuthProvider extends Component {
       console.log(err)
     }
   }
+  getCompanyDetails = async id =>{
+    try{
+      const company = await auth.getCompanyDetails(id)
+      this.setState({company:company})
+      return company
+    }catch(err){
+      console.log(err)
+    }
+  }
+  createNewItem = async (itemName, itemResponsibleName, itemResponsibleEmail, validityPeriodValue, validityPeriodUnits, noticePeriodValue, noticePeriodUnits, companyId)=>{
+    try{
+      // console.log("INSIDE AUTH PROVIDER")
+      const status = await auth.createNewItem(itemName, itemResponsibleName, itemResponsibleEmail, validityPeriodValue, validityPeriodUnits, noticePeriodValue, noticePeriodUnits, companyId)
+      return status
+    }catch(err){
+      console.log(err)
+    }
+  }
+  getItemDetails = async (itemsList) =>{
+    try{
+      const status = await auth.getItemDetails(itemsList)
+      return status
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   render() {
     const { isLoading, isLoggedin, user } = this.state;
@@ -174,7 +206,10 @@ class AuthProvider extends Component {
       sendResetPasswordEmail,
       saveNewPassword,
       saveNewPasswordFromSettings,
-      getUserInfo
+      getUserInfo,
+      getCompanyDetails,
+      createNewItem,
+      getItemDetails
     } = this;
 
     return isLoading ? (
@@ -191,7 +226,10 @@ class AuthProvider extends Component {
         sendResetPasswordEmail,
         saveNewPassword,
         saveNewPasswordFromSettings,
-        getUserInfo
+        getUserInfo,
+        getCompanyDetails,
+        createNewItem
+        ,getItemDetails
         }}>
         {this.props.children}
       </Provider>

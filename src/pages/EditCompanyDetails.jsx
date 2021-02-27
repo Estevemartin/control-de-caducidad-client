@@ -1,12 +1,41 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import { withAuth } from "../lib/AuthProvider";
 import SideNavbar from "../Components/navbars/SideNavbar";
 import TopNavbar from "../Components/navbars/TopNavbar";
 
 class EditCompanyDetails extends Component {
+  state={
+    company:null,
+    companyName:"",
+    responsibleName:"",
+    responsibleEmail:""
+  }
   /* TODO: bring details from backend */
+  componentDidMount = async()=>{
+    await this.getCompanyDetails()
+  }
 
+  getCompanyDetails = async () => {
+    const companyId = this.props.location.pathname.split("/")[2]
+    const companyDetails = await this.props.getCompanyDetails(companyId)
+    console.log(companyDetails)
+    this.setState({ 
+      company: companyDetails,
+      companyName: companyDetails.companyName,
+      responsibleName: companyDetails.responsible.respName,
+      responsibleEmail: companyDetails.responsible.email,
+    })
+  }
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  }
   render() {
+    const {companyName, responsibleName, responsibleEmail, company} = this.state
+
+    console.log(company)
     return (
       <div className="container">
         <SideNavbar />
@@ -15,152 +44,62 @@ class EditCompanyDetails extends Component {
           <div className="row flex-center py-5">
             <div className="col-lg-8 pr-lg-2">
               <div className="card mb-3">
-                <div className="card-header">
-                  <h5 className="mb-0">Edit Company Details</h5>
-                </div>
+                <div className="card-header"><h5 className="mb-0">Edit Company Details</h5></div>
                 <div className="card-body bg-light">
                   <form>
                     <div className="row gx-2">
                       <div className="col-12 mb-3">
-                        <label className="form-label" for="event-name">
-                          Company Name
-                        </label>
-                        <input
-                          className="form-control"
-                          id="event-name"
-                          type="text"
-                          placeholder="Type your company name here"
-                        />
+                        <label className="form-label" htmlFor="event-name">Company Name</label>
+                        <input className="form-control" id="event-name" type="text" placeholder="Type your company name here" name="companyName" value={companyName} onChange={(e) => this.handleChange(e)}/>
                       </div>
-                      <div className=" col-12 mb-3">
-                        <h6 className="form-label" for="modal-auth-email">
-                          Company Responsible
-                        </h6>
-                      </div>
+                      {/* <div className=" col-12 mb-3">
+                        <h6 className="form-label" for="modal-auth-email">Company Responsible</h6>
+                      </div> */}
                       <div className="col-sm-6 mb-3 mt-1">
-                        <label className="form-label" for="event-address">
-                          Responsible Name
-                        </label>
-                        <input
-                          className="form-control mt-2"
-                          id="event-address"
-                          type="text"
-                          placeholder="Type name here"
-                        />
+                        <label className="form-label" htmlFor="event-address">Responsible Name</label>
+                        <input className="form-control mt-2" id="event-address" type="text" placeholder="Type name here" name="responsibleName" value={responsibleName} onChange={(e) => this.handleChange(e)}/>
                       </div>
                       <div className="col-sm-6 mb-3">
-                        <label className="form-label" for="event-address">
-                          Responsible Email
-                          <button
-                            class="btn btn-sm m-1"
-                            type="button"
-                            data-toggle="tooltip"
-                            data-placement="right"
-                            title="This person will appear as 'CC' in every email sent in this company."
-                          >
-                            <i class="fas fa-question-circle"></i>
-                          </button>
-                        </label>
-
-                        <input
-                          className="form-control"
-                          id="event-address"
-                          type="text"
-                          placeholder="Type email here"
-                        />
+                        <label className="form-label" htmlFor="event-address">Responsible Email<button className="btn btn-sm m-1" type="button" data-toggle="tooltip" data-placement="right" title="This person will appear as 'CC' in every email sent in this company."><i className="fas fa-question-circle"></i></button></label>
+                        <input className="form-control" id="event-address" type="text" placeholder="Type email here" name="responsibleEmail" value={responsibleEmail} onChange={(e) => this.handleChange(e)}/>
                       </div>
                     </div>
 
-                    <div className="card mb-3">
-                      <div className="card-header">
-                        <h5 className="mb-0">Company Logo</h5>
-                      </div>
+                    {/* <div className="card mb-3">
+                      <div className="card-header"><h5 className="mb-0">Company Logo</h5></div>
                       <div className="card-body bg-light">
-                        <div
-                          className="dropzone dropzone-multiple p-0"
-                          id="my-awesome-dropzone"
-                          data-dropzone="data-dropzone"
-                          action="../assets/img/"
-                        >
+                        <div className="dropzone dropzone-multiple p-0" id="my-awesome-dropzone" data-dropzone="data-dropzone" action="../assets/img/">
                           <div className="fallback">
-                            <input
-                              name="file"
-                              type="file"
-                              multiple="multiple"
-                            />
+                            <input name="file" type="file" multiple="multiple"/>
                           </div>
-                          <div
-                            className="dz-message"
-                            data-dz-message="data-dz-message"
-                          >
+                          <div className="dz-message" data-dz-message="data-dz-message" >
                             {" "}
-                            <img
-                              className="mr-2"
-                              src="../assets/img/icons/cloud-upload.svg"
-                              width="25"
-                              alt=""
-                            />
-                            Drop your logo here
+                            <img className="mr-2" src="../assets/img/icons/cloud-upload.svg" width="25" alt=""/>Drop your logo here
                           </div>
                           <div className="dz-preview dz-preview-multiple m-0 d-flex flex-column">
                             <div className="d-flex media align-items-center mb-3 pb-3 border-bottom btn-reveal-trigger">
-                              <img
-                                className="dz-image"
-                                src="..."
-                                alt="..."
-                                data-dz-thumbnail="data-dz-thumbnail"
-                              />
+                              <img className="dz-image" src="..." alt="..." data-dz-thumbnail="data-dz-thumbnail"/>
                               <div className="flex-1 d-flex flex-between-center">
                                 <div>
-                                  {/* eslint-disable-next-line */}
                                   <h6 data-dz-name="data-dz-name"></h6>
                                   <div className="d-flex align-items-center">
-                                    <p
-                                      className="mb-0 fs--1 text-400 lh-1"
-                                      data-dz-size="data-dz-size"
-                                    ></p>
-                                    <div className="dz-progress">
-                                      <span
-                                        className="dz-upload"
-                                        data-dz-uploadprogress=""
-                                      ></span>
-                                    </div>
+                                    <p className="mb-0 fs--1 text-400 lh-1" data-dz-size="data-dz-size"></p>
+                                    <div className="dz-progress"><span className="dz-upload" data-dz-uploadprogress=""></span></div>
                                   </div>
                                 </div>
                                 <div className="dropdown font-sans-serif">
-                                  <button
-                                    className="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal dropdown-caret-none"
-                                    type="button"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                  >
-                                    <span className="fas fa-ellipsis-h"></span>
-                                  </button>
-                                  <div className="dropdown-menu dropdown-menu-right border py-2">
-                                    <a
-                                      className="dropdown-item"
-                                      href="#!"
-                                      data-dz-remove="data-dz-remove"
-                                    >
-                                      Remove File
-                                    </a>
-                                  </div>
+                                  <button className="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal dropdown-caret-none" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="fas fa-ellipsis-h"></span></button>
+                                  <div className="dropdown-menu dropdown-menu-right border py-2"><a className="dropdown-item" href="#!" data-dz-remove="data-dz-remove">Remove File</a></div>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="d-flex justify-content-center w-100">
-                      <button
-                        className="btn btn-primary btn-xs mt-3 d-flex justify-center"
-                        type="submit"
-                        name="submit"
-                      >
-                        Edit company
-                      </button>
+                    </div> */}
+                    <div className="d-flex justify-content-between w-100">
+                      <button className="btn btn-primary btn-xs mt-3 d-flex justify-center" type="submit" name="submit">Back</button>
+                      <Link to={company?"/company-details/"+company.id:""}><button className="btn btn-success btn-xs mt-3 d-flex justify-center" >Save</button></Link>
                     </div>
                   </form>
                 </div>
