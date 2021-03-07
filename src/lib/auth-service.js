@@ -23,7 +23,7 @@ class Auth {
   getCompanyDetails(id){return this.auth.post("/getCompanyDetails",{id}).then(({data})=>data)}
   createNewItem(itemName, itemResponsibleName, itemResponsibleEmail, validityPeriodValue, validityPeriodUnits, noticePeriodValue, noticePeriodUnits, companyId){
     return this.auth.post("/createNewItem",{itemName, itemResponsibleName, itemResponsibleEmail, validityPeriodValue, validityPeriodUnits, noticePeriodValue, noticePeriodUnits, companyId}).then(({data})=>data)}
-  getItemDetails(itemsList){return this.auth.post("/getItemDetails",{itemsList}).then(({data})=>data)}
+  getItemDetails(itemId){return this.auth.post("/getItemDetails",{itemId}).then(({data})=>data)}
 
 }
 

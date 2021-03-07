@@ -186,9 +186,9 @@ class AuthProvider extends Component {
       console.log(err)
     }
   }
-  getItemDetails = async (itemsList) =>{
+  getItemDetails = async (itemId) =>{
     try{
-      const status = await auth.getItemDetails(itemsList)
+      const status = await auth.getItemDetails(itemId)
       return status
     }catch(err){
       console.log(err)

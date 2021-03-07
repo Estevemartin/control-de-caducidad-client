@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class MonthlyExpirationsChart extends Component {
   render() {
     return (
-      <div className="col-xxl-8 pl-xxl-2">
+      <div className="col-xxl-12 pl-xxl-2" style={{paddingLeft:"0!important"}}>
         <div className="card mb-3">
           <div className="card-header bg-light py-2">
             <div className="row flex-between-center">

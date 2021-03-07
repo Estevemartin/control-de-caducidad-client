@@ -11,115 +11,83 @@ import SideNavbar from "../Components/navbars/SideNavbar";
 import TopNavbar from "../Components/navbars/TopNavbar";
 
 import { withAuth } from "../lib/AuthProvider";
+import { Link } from "react-router-dom";
+
 
 class ItemDetails extends Component {
   state = {
-    itemName: "",
-  };
+    item: "",
+    companyResponsible:"",
+    itemResponsible:"",
+    itemTitle:null,
+    companyName:"",
+    companyLink:""
+  }
 
   componentDidMount = () => {
-    this.GetCompanyName();
+    this.getItemDetails();
     this.Button();
-  };
+  }
 
-  GetCompanyName = () => {
-    const findItem = "Item name";
-    this.setState({ itemName: findItem });
-  };
+  getItemDetails = async () => {
+    const itemId = this.props.location.pathname.split("/")[2]
+    // console.log(itemId)
+    const item = await this.props.getItemDetails(itemId)
+    // console.log(item)
+    const companyResponsible = item.companyId.responsible.respName
+    const itemResponsible = item.responsible.name
+    const companyName = item.companyId.companyName
+    const companyLink = "/company-details/" + item.companyId._id
+    this.setState({ item, companyResponsible, itemResponsible, companyName, companyLink});
+  }
 
+  getItemTitle=()=>{
+    const { item } = this.state;
+    if(item!==""){
+      return <span><Link to="/landing">Companies </Link> > <Link to={"/company-details/"+item.companyId._id}>{item.companyId.companyName}</Link> > {item.itemName}</span>
+    } else{
+      return ""
+    }
+  }
+  
+  getCompanyResponsible=()=>{
+    const { item } = this.state;
+    if(item!==""){
+      return this.state.item.companyId.responsible.name
+    } else{
+      return ""
+    }
+  }
   Button = () => {
     return (
       <>
-        <button
-          class="btn btn-falcon-primary btn-sm"
-          type="button"
-          data-toggle="modal"
-          data-target="#exampleModal"
-        >
-          Edit item
-        </button>
+        <button className="btn btn-falcon-primary btn-sm" type="button" data-toggle="modal" data-target="#exampleModal">Edit item</button>
         {/* <!-- Modal--> */}
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                  Edit
-                </h5>
-                <button
-                  class="close"
-                  type="button"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span class="font-weight-light" aria-hidden="true">
-                    &times;
-                  </span>
+        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Edit</h5>
+                <button className="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span className="font-weight-light" aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 {/* EDIT FORM */}
 
                 <div className="card mb-3">
                   <div className="card-body bg-light">
                     <div className="" id="experience-form1">
                       <form className="row">
-                        <div className="col-3 mb-3 text-lg-right">
-                          <label className="form-label" for="company">
-                            Name
-                          </label>
-                        </div>
-                        <div className="col-6 col-sm-7 mb-3">
-                          <input
-                            className="form-control form-control-sm"
-                            id="company"
-                            type="text"
-                          />
-                        </div>
-
-                        <div className="col-3 mb-3 text-lg-right">
-                          <label className="form-label" for="company">
-                            Item responsible name
-                          </label>
-                        </div>
-                        <div className="col-6 col-sm-7 mb-3">
-                          <input
-                            className="form-control form-control-sm"
-                            id="company"
-                            type="text"
-                          />
-                        </div>
-
-                        <div className="col-3 mb-3 text-lg-right">
-                          <label className="form-label" for="company">
-                            Item responsible email
-                          </label>
-                        </div>
-                        <div className="col-6 col-sm-7 mb-3">
-                          <input
-                            className="form-control form-control-sm"
-                            id="company"
-                            type="text"
-                          />
-                        </div>
-
-                        <div className="col-3 mb-3 text-lg-right">
-                          <label className="form-label" for="position">
-                            Validity period
-                          </label>
-                        </div>
+                        <div className="col-3 mb-3 text-lg-right"><label className="form-label" htmlFor="company">Name</label></div>
+                        <div className="col-6 col-sm-7 mb-3"><input className="form-control form-control-sm" type="text"/></div>
+                        <div className="col-3 mb-3 text-lg-right"><label className="form-label" htmlFor="company">Item responsible name</label></div>
+                        <div className="col-6 col-sm-7 mb-3"><input className="form-control form-control-sm" type="text"/></div>
+                        <div className="col-3 mb-3 text-lg-right"><label className="form-label" htmlFor="company">Item responsible email</label></div>
+                        <div className="col-6 col-sm-7 mb-3"><input className="form-control form-control-sm" type="text"/></div>
+                        <div className="col-3 mb-3 text-lg-right"><label className="form-label" htmlFor="position">Validity period</label></div>
                         <div className="col-3">
-                          <select
-                            className="form-select"
-                            aria-label="Default select example"
-                          >
+                          <select className="form-select" aria-label="Default select example" >
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -154,10 +122,7 @@ class ItemDetails extends Component {
                           </select>
                         </div>
                         <div className="col-3">
-                          <select
-                            className="form-select"
-                            aria-label="Default select example"
-                          >
+                          <select className="form-select" aria-label="Default select example" >
                             <option value="Days">Days</option>
                             <option value="Weeks">Weeks</option>
                             <option value="Months">Months</option>
@@ -165,16 +130,9 @@ class ItemDetails extends Component {
                           </select>
                         </div>
                         <br />
-                        <div className="col-3 mb-3 text-lg-right">
-                          <label className="form-label" for="position">
-                            Notice period
-                          </label>
-                        </div>
+                        <div className="col-3 mb-3 text-lg-right"><label className="form-label" htmlFor="position">Notice period</label></div>
                         <div className="col-3">
-                          <select
-                            className="form-select"
-                            aria-label="Default select example"
-                          >
+                          <select className="form-select" aria-label="Default select example">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -209,10 +167,7 @@ class ItemDetails extends Component {
                           </select>
                         </div>
                         <div className="col-3">
-                          <select
-                            className="form-select"
-                            aria-label="Default select example"
-                          >
+                          <select className="form-select" aria-label="Default select example">
                             <option value="Days">Days in advace</option>
                             <option value="Weeks">Weeks in advace</option>
                             <option value="Months">Months in advace</option>
@@ -221,17 +176,8 @@ class ItemDetails extends Component {
                         </div>
                         <div className="col-auto container">
                           <div className="form-check mb-0">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              id="basic-checkbox"
-                            />
-                            <label
-                              className="form-check-label"
-                              for="basic-checkbox"
-                            >
-                              Update previous expiry dates to new item duration
-                            </label>
+                            <input className="form-check-input" type="checkbox" id="basic-checkbox" />
+                            <label className="form-check-label" htmlFor="basic-checkbox" >Update previous expiry dates to new item duration</label>
                           </div>
                         </div>
                       </form>
@@ -240,27 +186,26 @@ class ItemDetails extends Component {
                   </div>
                 </div>
               </div>
-              <div class="modal-footer">
-                <button
-                  class="btn btn-secondary btn-sm"
-                  type="button"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button class="btn btn-primary btn-sm" type="button">
-                  Save changes
-                </button>
+              <div className="modal-footer">
+                <button className="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Close</button>
+                <button className="btn btn-primary btn-sm" type="button">Save changes</button>
               </div>
             </div>
           </div>
         </div>
       </>
     );
-  };
+  }
 
   render() {
-    const { itemName } = this.state;
+    const { companyResponsible, itemResponsible, companyName, companyLink} = this.state;
+
+    // console.log(item)
+    let itemTitle = this.getItemTitle()
+    // let companyResponsible = this.getCompanyResponsible
+    // console.log(itemTitle)
+    // console.log(companyResponsible)
+
     return (
       <div>
         <div className="container">
@@ -268,13 +213,13 @@ class ItemDetails extends Component {
           <div className="content">
             <TopNavbar />
             {/* TOP COMPANY NAVBAR */}
-            <CompanyNavbar theName={itemName} button={this.Button()} />
+            <CompanyNavbar theName={itemTitle}  button={this.Button()} />
 
             {/* CONTENT */}
             <div>
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+              <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                 {/* CONTROLLED ITEMS CARD */}
-                <div className="col-md-4">
+                <div className="col-md-4 mb-3">
                   <ControlledItemsCard />
                 </div>
                 {/* EXPIRED ITEMS CARD */}
@@ -282,8 +227,8 @@ class ItemDetails extends Component {
                   <ExpiredItemsCard />
                 </div>
                 {/* RESPONSIBLES */}
-                <div className="col-md-4">
-                  <ResponsiblesTag />
+                <div className="col-md-4 mb-3">
+                  <ResponsiblesTag itemResponsible={itemResponsible} companyResponsible={companyResponsible}/>
                 </div>
               </div>
             </div>
@@ -302,7 +247,7 @@ class ItemDetails extends Component {
                 <div className="col-12 col-md-8">
                   <ReminderConfig />
                 </div>
-                <div className="col-12 col-md-4">
+                <div className="col-12 col-md-4 mb-3">
                   <LastDeliveries />
                 </div>
               </div>

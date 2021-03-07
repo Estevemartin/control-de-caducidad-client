@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
+import { Link } from "react-router-dom";
 
 class ItemAddAndList extends Component {
   state={
-    company:{},
-    itemName:"",
     itemResponsibleName:"",
     itemResponsibleEmail:"",
     validityPeriodValue:"1",
@@ -22,14 +21,18 @@ class ItemAddAndList extends Component {
   handleFormSubmit = async event => {
     event.preventDefault();
     const {itemName, itemResponsibleName, itemResponsibleEmail, validityPeriodValue, validityPeriodUnits, noticePeriodValue, noticePeriodUnits} = this.state
+    console.log(this.props.company)
     const companyId = this.props.company._id
     const errorMsgValidations = this.createNewItemValidations(itemName, itemResponsibleName, itemResponsibleEmail)
     if (errorMsgValidations===null){
       let errorMsg=await this.props.createNewItem(itemName, itemResponsibleName, itemResponsibleEmail, validityPeriodValue, validityPeriodUnits, noticePeriodValue, noticePeriodUnits, companyId)
       this.setState({successMsg:"Item Successfully Created",errorMsg:null})
+      await this.getCompanyDetails()
+      this.forceUpdate()
     } else {
       this.setState({errorMsg:errorMsgValidations,successMsg:null})
     }
+
   }
   displayErrorMsg=()=>{
     const {errorMsg} = this.state
@@ -57,24 +60,61 @@ class ItemAddAndList extends Component {
 
     else if(itemName !== "" && itemResponsibleEmail !== "" && itemResponsibleName !== ""){return null}
   }
-  displayItemsList= async()=>{
-    // console.log(this.props.company._id)
-    // if(this.props.company.items!==undefined){
-    //   const itemList = this.props.company.items
-    //   const itemsDetails = await this.props.getItemDetails(itemList)
-    // }
+  displayItemsList= ()=>{
     
-    //buscar informacion de los items
+    const {items} = this.props
+    const {company} = this.state
+    // console.log(company)
+    // console.log(items)
+    if (company!==undefined){
+      const companyItems = company.items
+      return companyItems.map((element,index)=>{
+        // console.log(element.workers.length)
+        const link = "/item-details/"+element._id
+        return (
+          <div className="d-flex" key={index}>
+            <div className="flex-1 position-relative pl-3">
+              <h6 className="fs-0 mb-0"><Link to={link}>{element.itemName}</Link></h6>
+              <p className="mb-1" style={{fontSize:'0.8rem'}}>{element.workers.length} {element.workers.length===1?'employee':'employees'}</p>
+              <div className="border-dashed-bottom my-3"></div>
+            </div>
+          </div>
+        ) 
+      })
+    } else if (items!==undefined){
+      return items.map((element,index)=>{
+        // console.log(element.workers.length)
+        const link = "/item-details/"+element._id
+
+        return (
+          <div className="d-flex" key={index}>
+            <div className="flex-1 position-relative pl-3">
+              <h6 className="fs-0 mb-0"><Link to={link}>{element.itemName}</Link></h6>
+              <p className="mb-1" style={{fontSize:'0.8rem'}}>{element.workers.length}  {element.workers.length===1?'employee':'employees'}</p>
+              <div className="border-dashed-bottom my-3"></div>
+            </div>
+          </div>
+        ) 
+      })
+    }
   }
   componentDidMount = async() =>{
-    const companyDetails = await this.props.getCompanyDetails(this.props.company._id)
-    const companyItems = companyDetails.items
-    console.log(companyItems)
-    if(companyItems!==undefined){
-      // const itemList = this.props.company.items
-      const itemsDetails = await this.props.getItemDetails(companyItems)
-      console.log(itemsDetails)
-    }
+    // const companyDetails = await this.props.getCompanyDetails(this.props.company._id)
+    const items=this.props.items
+    // console.log(items)
+    // console.log(companyDetails)
+    // if (companyDetails!==null){
+    //   const companyItems = companyDetails.items
+    //   console.log(companyItems)
+      
+    // }
+  }
+  getCompanyDetails = async () => {
+    const companyId = this.props.company._id
+    const companyDetails = await this.props.getCompanyDetails(companyId)
+    //COMPANY NAME
+    // console.log(companyDetails)
+    this.setState({ company: companyDetails })
   }
 
   render() {
@@ -145,21 +185,8 @@ class ItemAddAndList extends Component {
             
             <div className="border-dashed-bottom my-4"></div>
           </div>
-          {/* {this.displayItemsList()} */}
-          <div className="d-flex">
-            <div className="flex-1 position-relative pl-3">
-              <h6 className="fs-0 mb-0"><a href="#!">Item 1</a></h6>
-              <p className="mb-1">{" "}1.234 Personas</p>
-              <div className="border-dashed-bottom my-3"></div>
-            </div>
-          </div>
-          <div className="d-flex">
-            <div className="flex-1 position-relative pl-3">
-              <h6 className="fs-0 mb-0"><a href="#!">Item 2</a></h6>
-              <p className="mb-1">{" "}424 Personas</p>
-              <div className="border-dashed-bottom my-3"></div>
-            </div>
-          </div>
+          {this.displayItemsList()}
+          
         </div>
       </div>
     );

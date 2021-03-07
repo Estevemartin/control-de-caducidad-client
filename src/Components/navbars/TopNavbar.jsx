@@ -8,7 +8,7 @@ function TopNavbar(props) {
     return (
       <>
       {isLoggedin ? (
-      <nav className="navbar navbar-light navbar-glass navbar-top navbar-expand">
+      <nav className="navbar navbar-mpa navbar-light navbar-glass navbar-top navbar-expand">
         <button
           className="btn navbar-toggler-humburger-icon navbar-toggler mr-1 mr-sm-3"
           type="button"

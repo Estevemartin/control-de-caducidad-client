@@ -8,7 +8,7 @@ class CompanyNavbar extends Component {
 
   render() {
     return (
-      <div className="card mb-3 mt-2 container">
+      <div className="card mb-3 mt-2 header-mpa container">
         <div className="card-body">
           <div className="row flex-between-center">
             <div className="col-md">

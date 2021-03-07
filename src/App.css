@@ -15,6 +15,12 @@
 .navbar-glass {
     background-color: rgb(237, 242, 249) !important;
 }
+.navbar-mpa{
+    padding-bottom:0 !important
+}
+.header-mpa{
+    margin-top:0 !important
+}
 
 @media only screen and (min-width: 1200px){
     .navbar-logo-mpasol {
