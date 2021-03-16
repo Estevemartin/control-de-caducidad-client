@@ -25,7 +25,7 @@ class ItemAddAndList extends Component {
     const companyId = this.props.company._id
     const errorMsgValidations = this.createNewItemValidations(itemName, itemResponsibleName, itemResponsibleEmail)
     if (errorMsgValidations===null){
-      let errorMsg=await this.props.createNewItem(itemName, itemResponsibleName, itemResponsibleEmail, validityPeriodValue, validityPeriodUnits, noticePeriodValue, noticePeriodUnits, companyId)
+      await this.props.createNewItem(itemName, itemResponsibleName, itemResponsibleEmail, validityPeriodValue, validityPeriodUnits, noticePeriodValue, noticePeriodUnits, companyId)
       this.setState({successMsg:"Item Successfully Created",errorMsg:null})
       await this.getCompanyDetails()
       this.forceUpdate()
@@ -100,7 +100,7 @@ class ItemAddAndList extends Component {
   }
   componentDidMount = async() =>{
     // const companyDetails = await this.props.getCompanyDetails(this.props.company._id)
-    const items=this.props.items
+    // const items=this.props.items
     // console.log(items)
     // console.log(companyDetails)
     // if (companyDetails!==null){

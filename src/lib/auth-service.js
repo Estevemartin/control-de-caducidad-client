@@ -24,7 +24,8 @@ class Auth {
   createNewItem(itemName, itemResponsibleName, itemResponsibleEmail, validityPeriodValue, validityPeriodUnits, noticePeriodValue, noticePeriodUnits, companyId){
     return this.auth.post("/createNewItem",{itemName, itemResponsibleName, itemResponsibleEmail, validityPeriodValue, validityPeriodUnits, noticePeriodValue, noticePeriodUnits, companyId}).then(({data})=>data)}
   getItemDetails(itemId){return this.auth.post("/getItemDetails",{itemId}).then(({data})=>data)}
-
+  // getCompanEmployees(companyId){return this.auth.post("/getCompanyEmployees",{companyId}).then(({data})=>data)}
+  addEmployee(name,surname,email,companyId){return this.auth.post("/addEmployee",{name,surname,email,companyId}).then(({data})=>data)}
 }
 
 

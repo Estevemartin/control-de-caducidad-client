@@ -15,19 +15,21 @@ import { Link } from "react-router-dom";
 
 
 class ItemDetails extends Component {
+  
+
   state = {
     item: "",
     companyResponsible:"",
     itemResponsible:"",
     itemTitle:null,
     companyName:"",
-    companyLink:""
+    companyLink:"",
+    pathName:""
   }
-
   componentDidMount = () => {
     this.getItemDetails();
     this.Button();
-  }
+   }
 
   getItemDetails = async () => {
     const itemId = this.props.location.pathname.split("/")[2]
@@ -198,7 +200,7 @@ class ItemDetails extends Component {
   }
 
   render() {
-    const { companyResponsible, itemResponsible, companyName, companyLink} = this.state;
+    const { companyResponsible, itemResponsible} = this.state;
 
     // console.log(item)
     let itemTitle = this.getItemTitle()
@@ -207,7 +209,7 @@ class ItemDetails extends Component {
     // console.log(companyResponsible)
 
     return (
-      <div>
+      <div key={this.props.location.pathname.split("/")[2]}>
         <div className="container">
           <SideNavbar />
           <div className="content">

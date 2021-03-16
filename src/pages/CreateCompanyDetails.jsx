@@ -43,10 +43,10 @@ class CreateCompanyDetails extends Component {
     };
   
 
-  handleFormSubmit = (event) => {
+  handleFormSubmit = async (event) => {
     event.preventDefault();
     const { companyName, respName, email, invitationCode } = this.state;
-    companyservice.createCompany({companyName, respName, email, invitationCode});
+    await companyservice.createCompany({companyName, respName, email, invitationCode});
     this.props.history.push(`/landing`);
   };
 

@@ -18,7 +18,8 @@ import EditCompanyDetails from './pages/EditCompanyDetails';
 import ProfileSettings from './pages/ProfileSettings'; 
 import CompanyDetails from './pages/CompanyDetails';  
 import EmployeeDetails from './pages/EmployeeDetails';  
-import ItemDetails from './pages/ItemDetails';      
+import ItemDetails from './pages/ItemDetails';     
+import CompanyEmployees from './pages/CompanyEmployees';   
 import Spinner from './Components/Spinner';
 
 
@@ -43,8 +44,9 @@ function App() {
           <PrivateRoute exact path="/edit-company/:id" component={EditCompanyDetails}/>
           <PrivateRoute exact path="/profile-settings" component={ProfileSettings}/>
           <PrivateRoute exact path="/user-menu-companies" component={LandingCompanies}/>
-          <PrivateRoute exact path="/company-details/:id" component={CompanyDetails}/>
-          <PrivateRoute exact path="/item-details/:id" component={ItemDetails}/>
+          <PrivateRoute exact path="/company-details/:id" component={(props) => <CompanyDetails {...props} key={window.location.pathname}/>}/>
+          <PrivateRoute exact path="/company-employees/:id" component={(props) => <CompanyEmployees {...props} key={window.location.pathname}/>}/>
+          <PrivateRoute exact path="/item-details/:id"  component={(props) => <ItemDetails {...props} key={window.location.pathname}/>}/>
           <PrivateRoute exact path="/employee-details/:id" component={EmployeeDetails}/>
         </Switch>
       </main>

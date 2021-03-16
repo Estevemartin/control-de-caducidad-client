@@ -22,7 +22,8 @@ const withAuth = (WrappedComponent) => {
           getUserInfo,
           getCompanyDetails,
           createNewItem,
-          getItemDetails
+          getItemDetails,
+          addEmployee
           }) => {
             return (
               <WrappedComponent
@@ -40,6 +41,7 @@ const withAuth = (WrappedComponent) => {
                 getCompanyDetails={getCompanyDetails}
                 createNewItem={createNewItem}
                 getItemDetails={getItemDetails}
+                addEmployee={addEmployee}
                 {...this.props}
               />
             );
@@ -56,7 +58,8 @@ class AuthProvider extends Component {
     user: null,
     isLoading: true,
     errorMsg:null,
-    emailToActivate:null
+    emailToActivate:null,
+    company:null
   };
 
   componentDidMount() {
@@ -195,8 +198,25 @@ class AuthProvider extends Component {
     }
   }
 
+  addEmployee = async(name,surname,email,companyId) =>{
+    try{
+      // console.log(name)
+      const status = await auth.addEmployee(name,surname,email,companyId)
+      console.log(status)
+      if (status.message===undefined){
+        this.setState({company:status})
+      }
+      // console.log(status)
+      return status
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+  
+
   render() {
-    const { isLoading, isLoggedin, user } = this.state;
+    const { isLoading, isLoggedin, user, company } = this.state;
     const {
       login,
       logout,
@@ -209,7 +229,8 @@ class AuthProvider extends Component {
       getUserInfo,
       getCompanyDetails,
       createNewItem,
-      getItemDetails
+      getItemDetails,
+      addEmployee
     } = this;
 
     return isLoading ? (
@@ -218,6 +239,7 @@ class AuthProvider extends Component {
       <Provider value={{
         isLoggedin,
         user,
+        company,
         login,
         logout,
         signup,
@@ -228,8 +250,9 @@ class AuthProvider extends Component {
         saveNewPasswordFromSettings,
         getUserInfo,
         getCompanyDetails,
-        createNewItem
-        ,getItemDetails
+        createNewItem,
+        getItemDetails,
+        addEmployee
         }}>
         {this.props.children}
       </Provider>

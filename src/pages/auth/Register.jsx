@@ -66,7 +66,7 @@ class Register extends Component {
   displayErrorMsg = () =>{
     const {errorMsg} = this.state
     if (errorMsg!=="" && errorMsg!==null){
-      return <div class="alert alert-danger" role="alert" style={{padding:"5px",paddingLeft:"10px"}}>{errorMsg}</div>
+      return <div className="alert alert-danger" role="alert" style={{padding:"5px",paddingLeft:"10px"}}>{errorMsg}</div>
     }
   }
   handleChange = (event) => {

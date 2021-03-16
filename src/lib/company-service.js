@@ -12,7 +12,8 @@ class Company {
 
   createCompany = async({companyName,respName,email,invitationCode}) =>{
     try {
-      const newCompany = this.company.post(`/add-company`,{companyName,respName,email,invitationCode})
+      const newCompany = await this.company.post(`/add-company`,{companyName,respName,email,invitationCode})
+      console.log(newCompany)
       return newCompany.data
     } catch (error) {
       console.log(error)
